@@ -326,6 +326,7 @@ MonoBehaviour:
   _weapons:
   - {fileID: 1245922328019509576, guid: 59b32c2f5809bae4ebeef938122e210c, type: 3}
   _moveSpeed: 2
+  Knife: {fileID: 1245922328019509576, guid: 59b32c2f5809bae4ebeef938122e210c, type: 3}
 --- !u!50 &1900346202
 Rigidbody2D:
   serializedVersion: 4
