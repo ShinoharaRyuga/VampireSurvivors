@@ -13,16 +13,12 @@ public abstract class WeaponBase : MonoBehaviour
 
     /// <summary>次の攻撃までの時間(間隔) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
-    /// <summary>敵に与えるダメージ</summary>
-    public int Damage { get => _damage; set => _damage = value; }
-    /// <summary>ノックバック時にかける力</summary>
-    public int KnockBackPower { get => _knockBackPower; set => _knockBackPower = value; }
     /// <summary>移動速度</summary>
     public int MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
   
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>
-    public abstract void Move(Vector3 vector3);
+    public abstract void Move(Vector3 moveDirection);
 
     /// <summary>一定間隔ごとに武器を生成する </summary>
     /// <param name="playerTransform">プレイヤーの位置</param>
@@ -40,6 +36,27 @@ public abstract class WeaponBase : MonoBehaviour
             var generationPos = new Vector3(playerTransform.position.x + offsetX, playerTransform.position.y + offsetY, 0);
             var go = Instantiate(this, generationPos, Quaternion.identity);
             go.Move(playerTransform.up);
+        }
+    }
+
+    /// <summary>敵に当たったらダメージを与える </summary>
+    public void Attack(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyStatus enemyStatus = collision.gameObject.GetComponent<EnemyStatus>();
+            enemyStatus.GetDamage(_damage);
+        }
+    }
+
+    /// <summary>敵に当たったらダメージを与える </summary>
+    public void Attack(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
+            enemyStatus.GetDamage(_damage);
+            Destroy(gameObject);
         }
     }
 }

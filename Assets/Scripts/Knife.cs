@@ -4,10 +4,16 @@ using UnityEngine;
 /// <summary>武器種　ナイフ </summary>
 public class Knife : WeaponBase
 {
-    public override void Move(Vector3 vector3)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Attack(collision);
+    }
+
+    public override void Move(Vector3 moveDirection)
     {
         var rb2D = GetComponent<Rigidbody2D>();
-        rb2D.AddForce(vector3 * MoveSpeed, ForceMode2D.Impulse);
+        transform.up = moveDirection;
+        rb2D.AddForce(moveDirection * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public override IEnumerator Generator(Transform playerTransform)
