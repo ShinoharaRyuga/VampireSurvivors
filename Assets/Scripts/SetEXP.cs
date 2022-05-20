@@ -28,7 +28,7 @@ public class SetEXP : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.CurrentEXP += AddEXP;
+            player.GetEXP(_addEXP);
             Destroy(gameObject);
         }
     }

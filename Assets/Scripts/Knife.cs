@@ -9,11 +9,11 @@ public class Knife : WeaponBase
         Attack(collision);
     }
 
-    public override void Move(Vector3 moveDirection)
+    public override void Move(Transform playerTransform)
     {
         var rb2D = GetComponent<Rigidbody2D>();
-        transform.up = moveDirection;
-        rb2D.AddForce(moveDirection * MoveSpeed, ForceMode2D.Impulse);
+        transform.up = playerTransform.up;
+        rb2D.AddForce(playerTransform.up * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public override IEnumerator Generator(Transform playerTransform)

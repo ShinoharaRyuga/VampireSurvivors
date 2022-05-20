@@ -18,7 +18,7 @@ public abstract class WeaponBase : MonoBehaviour
   
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>
-    public abstract void Move(Vector3 moveDirection);
+    public abstract void Move(Transform playerTransform);
 
     /// <summary>一定間隔ごとに武器を生成する </summary>
     /// <param name="playerTransform">プレイヤーの位置</param>
@@ -35,7 +35,7 @@ public abstract class WeaponBase : MonoBehaviour
             var offsetY = Random.Range(-1.0f, 1.0f);
             var generationPos = new Vector3(playerTransform.position.x + offsetX, playerTransform.position.y + offsetY, 0);
             var go = Instantiate(this, generationPos, Quaternion.identity);
-            go.Move(playerTransform.up);
+            go.Move(playerTransform);
         }
     }
 
