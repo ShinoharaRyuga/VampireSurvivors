@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SetEXP : MonoBehaviour
 {
+    [SerializeField] int _testPoint = 0;
     /// <summary>追加する経験値量 </summary>
     int _addEXP = 0;
     /// <summary>追加する経験値量 </summary>
@@ -28,7 +29,7 @@ public class SetEXP : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.GetEXP(_addEXP);
+            player.GetEXP(_testPoint);
             Destroy(gameObject);
         }
     }

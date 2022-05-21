@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MagicWand : WeaponBase
 {
-    FindEnemy _findEnemy = default;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Attack(collision);
+    }
+
     public override void Move(Transform playerTransform)
     {
-        _findEnemy = playerTransform.gameObject.GetComponent<FindEnemy>();
-        var dir = _findEnemy.GetMostNearEnemy() - transform.position;
+        var findEnemy = playerTransform.gameObject.GetComponent<FindEnemy>();
+        var dir = findEnemy.GetMostNearEnemy() - transform.position;
         var _rb2D = GetComponent<Rigidbody2D>();
-        _rb2D.AddForce(dir * MoveSpeed, ForceMode2D.Impulse);
+        _rb2D.AddForce(dir.normalized * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public override IEnumerator Generator(Transform playerTransform)
@@ -20,10 +24,5 @@ public class MagicWand : WeaponBase
             yield return new WaitForSeconds(AttackInterval);
             GameObjectGenerator(this.gameObject, playerTransform);
         }
-    }
-
-    public void GetFindEnemy(FindEnemy findEnemy)
-    {
-        _findEnemy = findEnemy;
     }
 }

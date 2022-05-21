@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>プレイヤーを動かす </summary>
 public class PlayerController : MonoBehaviour
@@ -10,16 +12,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("最大体力")] int _maxHp = 0;
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 0;
     /// <summary>テスト　あと作り直す </summary>
-    [SerializeField] int[] _nextLvUPEXP = default;
+    [SerializeField] float[] _nextLvUpEXP = default;
 
     Rigidbody2D _rb2D = default;
     /// <summary>現在所持している経験値 </summary>
     int _currentEXP = 0;
     /// <summary>現在の体力 </summary>
     int _currentHP = 0;
+    /// <summary>現在のレベル </summary>
+    int _currentLevel = 1;
+    /// <summary>次のレベルアップまでにかかる値の配列の添え字</summary>
+    int _nextLevelIndex = 0;
+    /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
+    int[] _selectedWeapons = new int[6];
     float _horizontal = 0f;
     float _vertical = 0f;
-   
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
@@ -30,6 +38,11 @@ public class PlayerController : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log($"{_currentEXP}");
+        }
     }
 
     void FixedUpdate()
@@ -53,8 +66,23 @@ public class PlayerController : MonoBehaviour
         Debug.Log("($・・)/~~~");
     }
 
+    /// <summary>経験値を受け取る </summary>
+    /// <param name="addEXP">増える経験値</param>
     public void GetEXP(int addEXP)
     {
         _currentEXP += addEXP;
+        _expSlider.value = (float)_currentEXP / _nextLvUpEXP[_nextLevelIndex];
+
+        if (_currentEXP >= _nextLvUpEXP[_nextLevelIndex])
+        {
+            LevelUp();
+        }
+    }
+
+    /// <summary>一定以上の経験値が貯まったらプレイヤーのレベルを上げる </summary>
+    void LevelUp()
+    {
+        _nextLevelIndex++;
+        _expSlider.value = 0;
     }
 }
