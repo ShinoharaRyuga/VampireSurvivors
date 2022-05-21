@@ -6,7 +6,7 @@ public class Knife : WeaponBase
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Attack(collision);
+        Attack(collision, true);
     }
 
     public override void Move(Transform playerTransform)

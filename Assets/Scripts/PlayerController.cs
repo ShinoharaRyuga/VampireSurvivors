@@ -31,7 +31,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
-        StartCoroutine(_weapons[1].Generator(this.transform));      //初期武器の生成を開始
+        _currentHP = _maxHp;
+        //  StartCoroutine(_weapons[0].Generator(transform));
+        // StartCoroutine(_weapons[1].Generator(transform));      //初期武器の生成を開始
+        StartCoroutine(_weapons[2].Generator(transform));
     }
 
     void Update()
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             Debug.Log($"{_currentEXP}");
+            Debug.Log($"{_currentHP}");
         }
     }
 
@@ -63,7 +67,8 @@ public class PlayerController : MonoBehaviour
     /// <param name="damage">被ダメージ</param>
     public void GetDamage(int damage)
     {
-        Debug.Log("($・・)/~~~");
+        _currentHP -= damage;
+        _hpSlider.value = (float)_currentHP / (float)_maxHp;
     }
 
     /// <summary>経験値を受け取る </summary>
@@ -86,3 +91,4 @@ public class PlayerController : MonoBehaviour
         _expSlider.value = 0;
     }
 }
+

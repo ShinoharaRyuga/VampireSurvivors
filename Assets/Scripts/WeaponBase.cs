@@ -40,23 +40,17 @@ public abstract class WeaponBase : MonoBehaviour
     }
 
     /// <summary>“G‚É“–‚½‚Á‚½‚çƒ_ƒ[ƒW‚ğ—^‚¦‚é </summary>
-    public void Attack(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            EnemyStatus enemyStatus = collision.gameObject.GetComponent<EnemyStatus>();
-            enemyStatus.GetDamage(_damage);
-        }
-    }
-
-    /// <summary>“G‚É“–‚½‚Á‚½‚çƒ_ƒ[ƒW‚ğ—^‚¦‚é </summary>
-    public void Attack(Collider2D other)
+    public void Attack(Collider2D other, bool destroyFlag)
     {
         if (other.CompareTag("Enemy"))
         {
             EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
             enemyStatus.GetDamage(_damage);
-            Destroy(gameObject);
+
+            if (destroyFlag)    //“G‚É“–‚½‚Á‚½‚çíœ‚³‚ê‚é•Ší‚È‚çíœ‚·‚é
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
