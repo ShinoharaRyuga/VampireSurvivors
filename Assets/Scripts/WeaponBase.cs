@@ -11,6 +11,8 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("ˆÚ“®‘¬“x")] int _moveSpeed = 0;
     [SerializeField, Tooltip("¶¬”")] int _generatorNumber = 1;
 
+    int _currentLevel = 1;
+
     /// <summary>Ÿ‚ÌUŒ‚‚Ü‚Å‚ÌŠÔ(ŠÔŠu) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
     /// <summary>ˆÚ“®‘¬“x</summary>
