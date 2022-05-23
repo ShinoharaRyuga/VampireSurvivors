@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         _rb2D = GetComponent<Rigidbody2D>();
         _currentHP = _maxHp;
-        StartCoroutine(_weapons[5].Generator(transform));
+        StartCoroutine(_weapons[4].Generator(transform));
+        //  StartCoroutine(_weapons[5].Generator(transform));
     }
 
     void Update()
