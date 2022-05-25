@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("経験値バー")] Slider _expSlider = default;
     [SerializeField, Tooltip("最大体力")] int _maxHp = 0;
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 0;
+    /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量,　クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
+    int[] _characterStatusArray = new int[16];
     /// <summary>テスト　あと作り直す </summary>
     [SerializeField] float[] _nextLvUpEXP = default;
 
@@ -28,12 +30,12 @@ public class PlayerController : MonoBehaviour
     float _horizontal = 0f;
     float _vertical = 0f;
 
+    public int[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
         _currentHP = _maxHp;
-        StartCoroutine(_weapons[4].Generator(transform));
-        //  StartCoroutine(_weapons[5].Generator(transform));
     }
 
     void Update()
@@ -43,8 +45,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log($"{_currentEXP}");
-            Debug.Log($"{_currentHP}");
+            foreach (int i in _characterStatusArray)
+            {
+                Debug.Log(i);
+            }
         }
     }
 
