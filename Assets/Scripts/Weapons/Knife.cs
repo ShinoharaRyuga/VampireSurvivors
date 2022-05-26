@@ -4,6 +4,10 @@ using UnityEngine;
 /// <summary>武器種　ナイフ </summary>
 public class Knife : WeaponBase
 {
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Attack(collision, true);

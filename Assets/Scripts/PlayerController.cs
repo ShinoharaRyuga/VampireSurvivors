@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
         _rb2D = GetComponent<Rigidbody2D>();
         _expSlider = GameObject.Find("EXPBar").GetComponent<Slider>();
         _currentHP = _maxHp;
+
+        StartCoroutine(_weapons[0].Generator(transform));
     }
 
     void Update()

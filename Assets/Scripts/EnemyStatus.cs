@@ -8,11 +8,8 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField, Tooltip("攻撃力")] int _attackPower = 1;
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 1f;
     [SerializeField, Tooltip("死亡時に落とす経験値の値")] int _dropEXPValue = 1;
-    [SerializeField, Tooltip("プレイヤー 攻撃対象")] GameObject _player = default;
     [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
-
     Rigidbody2D _rb2D = default;
-    PlayerController _playerController => _player.GetComponent<PlayerController>();
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
@@ -20,7 +17,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var dir = (_player.transform.position - transform.position).normalized * _moveSpeed;
+        var dir = (GameManager.Instance.Player.transform.position - transform.position).normalized * _moveSpeed;
         _rb2D.velocity = dir;
     }
 
@@ -28,7 +25,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _playerController.GetDamage(_attackPower);
+            GameManager.Instance.Player.GetDamage(_attackPower);
         }
     }
 
@@ -38,11 +35,20 @@ public class EnemyStatus : MonoBehaviour
     {
         _hp -= damage;
 
-        if (_hp <= 0)
+        if (_hp <= 0)   //死亡
         {
-            var go = Instantiate(_expObj, transform.position, Quaternion.identity);
-            go.AddEXP = _dropEXPValue;
-            Destroy(gameObject);
+            GameManager.Instance.ExpSpawner.Instantiate(transform);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void SetPopPosition(Vector2 pos)
+    {
+        transform.position = pos;
+    }
+
+    public void Destroy()
+    {
+        gameObject.SetActive(false);
     }
 }

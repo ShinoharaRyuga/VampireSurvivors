@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = default;
-    [SerializeField] PlayerController _player = default;
+    [SerializeField] PlayerController _playerPrefab = default;
+    /// <summary>生成されたプレイヤー </summary>
+    PlayerController _player = default;
+    EXPSpawner _expSpawner = default;
     int[] _selectedCharacterStatus = new int[16];
 
     public int[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
+    /// <summary>生成されたプレイヤー </summary>
+    public PlayerController Player { get => _player; set => _player = value; }
+    public EXPSpawner ExpSpawner { get => _expSpawner; set => _expSpawner = value; }
 
     private void Awake()
     {
@@ -29,8 +35,9 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "GameScene")
         {
-            var go = Instantiate(_player, Vector2.zero, Quaternion.identity);
-           go.CharacterStatusArray = _selectedCharacterStatus;
+            _player = Instantiate(_playerPrefab, Vector2.zero, Quaternion.identity);
+            _player.CharacterStatusArray = _selectedCharacterStatus;
+            _expSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EXPSpawner>();
         }
     }
 }

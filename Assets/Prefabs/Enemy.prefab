@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -140,5 +140,4 @@ MonoBehaviour:
   _attackPower: 1
   _moveSpeed: 1
   _dropEXPValue: 1
-  _player: {fileID: 0}
   _expObj: {fileID: 2699080774577347982, guid: 2a4449f01ffa19246aee9dc44d84ff8c, type: 3}
