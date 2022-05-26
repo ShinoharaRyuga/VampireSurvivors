@@ -1,30 +1,23 @@
 using System.Linq;
 using UnityEngine;
 
+/// <summary>–‚–@‚Ìñ‚â‰Š‚Ìñ‚Ég‚¤ ğŒ‚ğ–‚½‚µ‚½“G‚ğæ“¾‚·‚é</summary>
 public class FindEnemy : MonoBehaviour
 {
     [SerializeField, Tooltip("Õ“Ë‚³‚¹‚éƒŒƒCƒ„[")] LayerMask _targetLayerMask = default;
-    [SerializeField, Tooltip("õ“G‚Ì’†S")] Vector2 _findCenter = default;
     [SerializeField, Tooltip("õ“G")] float _radius = 1f;
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(GetCenter(), _radius);
-    }
-
-    /// <summary>õ“G‚Ì’†S‚ğ•Ô‚·</summary>
-    Vector3 GetCenter()
-    {
-        var center = transform.position + transform.up * _findCenter.y + transform.right * _findCenter.x;
-        return center;
+        Gizmos.DrawWireSphere(transform.position, _radius);
     }
 
     /// <summary>ƒvƒŒƒCƒ„[‚©‚çÅ‚à‹ß‚¢“G‚ğæ“¾‚·‚é </summary>
     /// <returns>“G‚ÌˆÊ’u</returns>
     public Vector3 GetMostNearEnemy()
     {
-        var nearEnemies = Physics2D.OverlapCircleAll(GetCenter(), _radius, _targetLayerMask);
+        var nearEnemies = Physics2D.OverlapCircleAll(transform.position, _radius, _targetLayerMask);
 
         if (nearEnemies.Length == 0)    //“G‚ğæ“¾o—ˆ‚È‚©‚Á‚½‚ç
         {
@@ -38,7 +31,7 @@ public class FindEnemy : MonoBehaviour
     /// <returns>“G‚ÌˆÊ’u</returns>
     public Vector3 GetRandomEnemy()
     {
-        var Enemies = Physics2D.OverlapCircleAll(GetCenter(), _radius, _targetLayerMask);
+        var Enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _targetLayerMask);
         if (Enemies.Length == 0)    //“G‚ğæ“¾o—ˆ‚È‚©‚Á‚½‚ç
         {
             return Vector3.zero;

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>プレイヤーがジェムを取得した時に追加される経験値量を設定する</summary>
 public class SetEXP : MonoBehaviour
 {
     [SerializeField] int _testPoint = 0;
@@ -24,13 +23,5 @@ public class SetEXP : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.GetEXP(_testPoint);
-            Destroy(gameObject);
-        }
-    }
+    public int TestPoint { get => _testPoint; set => _testPoint = value; }
 }

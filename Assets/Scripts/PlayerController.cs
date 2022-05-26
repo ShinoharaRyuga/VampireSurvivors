@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        _expSlider = GameObject.Find("EXPBar").GetComponent<Slider>();
         _currentHP = _maxHp;
     }
 
