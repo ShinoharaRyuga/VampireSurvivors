@@ -10,6 +10,9 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField, Tooltip("死亡時に落とす経験値の値")] int _dropEXPValue = 1;
     [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
     Rigidbody2D _rb2D = default;
+
+    public int DropEXPValue { get => _dropEXPValue; }
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();

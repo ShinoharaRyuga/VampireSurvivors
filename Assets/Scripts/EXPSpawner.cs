@@ -17,6 +17,7 @@ public class EXPSpawner : ObjectPool
             {
                 target.SetActive(true);
                 target.transform.localPosition = pos.position;
+                target.GetComponent<SetEXP>().AddEXP = pos.GetComponent<EnemyStatus>().DropEXPValue;
                 return target;
             }
         }
