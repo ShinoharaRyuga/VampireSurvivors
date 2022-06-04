@@ -12,16 +12,16 @@ public class Axe : WeaponBase
         Attack(collision, false);
     }
 
-    public override IEnumerator Generator(Transform playerTransform)
+    public override IEnumerator Generator()
     {
         while (true)
         {
             yield return new WaitForSeconds(AttackInterval);
-            GameObjectGenerator(gameObject, playerTransform);
+            GameObjectGenerator();
         }
     }
 
-    public override void Move(Transform playerTransform)
+    public override void Move()
     {
         var rb2D = GetComponent<Rigidbody2D>();
         var x = Random.Range(_minX, _maxX);

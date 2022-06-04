@@ -11,7 +11,7 @@ public class Bible : WeaponBase
 
     private void Update()
     {
-        Move(transform);
+        Move();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,11 +19,11 @@ public class Bible : WeaponBase
         Attack(collision, false);
     }
 
-    public override IEnumerator Generator(Transform playerTransform)
+    public override IEnumerator Generator()
     {
-        var go = Instantiate(gameObject, new Vector2(playerTransform.position.x + 3, playerTransform.position.y), Quaternion.identity);
+        var go = Instantiate(gameObject, new Vector2(GameManager.Instance.Player.transform.position.x + 3, GameManager.Instance.Player.transform.position.y), Quaternion.identity);
         go.GetComponent<Bible>().Rb2D = go.GetComponent<Rigidbody2D>();
-        go.GetComponent<Bible>().PlayerTransform = playerTransform;
+        go.GetComponent<Bible>().PlayerTransform = GameManager.Instance.Player.transform;
         yield return new WaitForSeconds(2);
         go.SetActive(false);
 
@@ -36,8 +36,8 @@ public class Bible : WeaponBase
         }
     }
 
-    public override void Move(Transform playerTransform)
+    public override void Move()
     {
-        _rb2D.MovePosition(new Vector2(3 * Mathf.Sin(Time.time * 3) + _playerTransform.position.x, 3 * Mathf.Cos(Time.time * 3) + _playerTransform.position.y));
+        _rb2D.MovePosition(new Vector2(3 * Mathf.Sin(Time.time * 3) + GameManager.Instance.Player.transform.position.x, 3 * Mathf.Cos(Time.time * 3) + GameManager.Instance.Player.transform.position.y));
     }
 }

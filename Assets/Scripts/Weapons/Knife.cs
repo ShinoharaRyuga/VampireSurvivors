@@ -13,19 +13,19 @@ public class Knife : WeaponBase
         Attack(collision, true);
     }
 
-    public override void Move(Transform playerTransform)
+    public override void Move()
     {
         var rb2D = GetComponent<Rigidbody2D>();
-        transform.up = playerTransform.up;
-        rb2D.AddForce(playerTransform.up * MoveSpeed, ForceMode2D.Impulse);
+        transform.up = GameManager.Instance.Player.transform.up;
+        rb2D.AddForce(GameManager.Instance.Player.transform.up * MoveSpeed, ForceMode2D.Impulse);
     }
 
-    public override IEnumerator Generator(Transform playerTransform)
+    public override IEnumerator Generator()
     {
         while (true)
         {
             yield return new WaitForSeconds(AttackInterval);
-            GameObjectGenerator(this.gameObject, playerTransform);
+            GameObjectGenerator();
         }
     }
 }
