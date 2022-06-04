@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>武器の基底クラス </summary>
@@ -10,10 +9,9 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("ノックバック時にかける力")] int _knockBackPower = 0;
     [SerializeField, Tooltip("移動速度")] int _moveSpeed = 0;
     [SerializeField, Tooltip("生成数")] int _generatorNumber = 1;
-
+    [SerializeField] int _maxLevel = 9;
     /// <summary>武器のレベル </summary>
     int _currentLevel = 1;
-
     /// <summary>次の攻撃までの時間(間隔) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
     /// <summary>移動速度</summary>
