@@ -9,13 +9,15 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("ノックバック時にかける力")] int _knockBackPower = 0;
     [SerializeField, Tooltip("移動速度")] int _moveSpeed = 0;
     [SerializeField, Tooltip("生成数")] int _generatorNumber = 1;
-    [SerializeField] int _maxLevel = 9;
+    [SerializeField, Tooltip("最大レベル")] int _maxLevel = 9;
     /// <summary>武器のレベル </summary>
     int _currentLevel = 1;
     /// <summary>次の攻撃までの時間(間隔) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
     /// <summary>移動速度</summary>
     public int MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+    /// <summary>敵に与えるダメージ </summary>
+    public int Damage { get => _damage; set => _damage = value; }
 
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>

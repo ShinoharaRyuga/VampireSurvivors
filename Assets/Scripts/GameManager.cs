@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class GameManager : MonoBehaviour
     /// <summary>生成されたプレイヤー </summary>
     PlayerController _player = default;
     EXPSpawner _expSpawner = default;
+    CinemachineVirtualCamera _playerCamera;
     int[] _selectedCharacterStatus = new int[16];
-
+    
     public int[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
     /// <summary>生成されたプレイヤー </summary>
     public PlayerController Player { get => _player; set => _player = value; }
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
             _player = Instantiate(_playerPrefab, Vector2.zero, Quaternion.identity);
             _player.CharacterStatusArray = _selectedCharacterStatus;
             _expSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EXPSpawner>();
+            _playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+            _playerCamera.Follow = _player.transform;
         }
     }
 }

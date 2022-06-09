@@ -596,7 +596,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 5
   m_GravityScale: 0
@@ -617,13 +617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9766f2809eca3ad478eb651bbe1aff53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapons:
-  - {fileID: 1245922328019509576, guid: 59b32c2f5809bae4ebeef938122e210c, type: 3}
-  - {fileID: 2537046472899327253, guid: c73b1e1cd08f0e049b81ad1c3a06bd82, type: 3}
-  - {fileID: 5432116211392705269, guid: 9f91da7bfed07574da47dba59e546628, type: 3}
-  - {fileID: 6166193768485548660, guid: 2d66060c2a11e0e47b7d91ad840d7dd2, type: 3}
-  - {fileID: 7379740749753805124, guid: 0ee717cd84db7f5498662b9d30df8de5, type: 3}
-  - {fileID: 3736406665757823659, guid: 877f9351ab7998e41bde9b80be98f6bc, type: 3}
   _hpSlider: {fileID: 1207258231}
   _expSlider: {fileID: 0}
   _maxHp: 80
