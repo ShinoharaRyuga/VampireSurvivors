@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 /// <summary>プレイヤーを動かす </summary>
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
     [SerializeField, Tooltip("経験値バー")] Slider _expSlider = default;
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     int _effectWeaponCount = 0;
     float _horizontal = 0f;
     float _vertical = 0f;
+    bool _isMove = true;
 
     public int[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
     public int MaxHp { get => _maxHp; set => _maxHp = value; }
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _expSlider = GameObject.Find("EXPBar").GetComponent<Slider>();
+        GameManager.Instance.AddPauseObject(this);
         _currentHP = _maxHp;
     }
 
@@ -42,20 +44,22 @@ public class PlayerController : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log(_characterStatusArray[0]);
-        }
     }
 
     void FixedUpdate()
     {
-        Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _moveSpeed;
-        if (dir != Vector2.zero)
+        if (_isMove)
         {
-            transform.up = dir;
-            _rb2D.velocity = dir;
+            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _moveSpeed;
+            if (dir != Vector2.zero)
+            {
+                transform.up = dir;
+                _rb2D.velocity = dir;
+            }
+            else
+            {
+                _rb2D.velocity = Vector2.zero;
+            }
         }
         else
         {
@@ -107,6 +111,18 @@ public class PlayerController : MonoBehaviour
         _nextLevelIndex++;
         _expSlider.value = 0;
         GameManager.Instance.WeaponManager.SetSelectWeapons();
+        GameManager.Instance.Pause();
+    }
+
+    public void Pause()
+    {
+        _isMove = false;
+    }
+
+    public void Restart()
+    {
+       
+        _isMove = true;
     }
 }
 

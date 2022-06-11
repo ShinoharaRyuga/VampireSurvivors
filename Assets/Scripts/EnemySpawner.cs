@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemySpawner : ObjectPool
+public class EnemySpawner : ObjectPool, IPause
 {
+    bool _isMove = true;
     void Start()
     {
         SetUp();
         StartCoroutine(Generator());
-    }
+        GameManager.Instance.AddPauseObject(this);
+;    }
 
     public override GameObject Instantiate(Transform pos)
     {
@@ -42,7 +44,18 @@ public class EnemySpawner : ObjectPool
         while (true)
         {
             yield return new WaitForSeconds(2f);
+            yield return new WaitUntil(() => _isMove == true);
             Instantiate(transform);
         }
+    }
+
+    public void Pause()
+    {
+        _isMove = false;
+    }
+
+    public void Restart()
+    { 
+        _isMove = true;
     }
 }

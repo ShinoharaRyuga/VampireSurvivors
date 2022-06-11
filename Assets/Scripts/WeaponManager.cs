@@ -67,6 +67,7 @@ public class WeaponManager : MonoBehaviour
     {
         GetWeapon(index, type);
         _skillSelectCanvas.SetActive(false);
+        GameManager.Instance.Restart();
         Array.ForEach(_skillSelectButtons, b => b.onClick.RemoveAllListeners());
     }
 }

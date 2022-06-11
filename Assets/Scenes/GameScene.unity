@@ -491,7 +491,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.775281, y: 1}
+    m_SensorSize: {x: 1.7794944, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetObj: {fileID: 3242657706462377085, guid: 8de6da24ad583464597e74c998f71c48, type: 3}
-  _maxCount: 100
+  _maxCount: 200
 --- !u!114 &989584011
 MonoBehaviour:
   m_ObjectHideFlags: 0

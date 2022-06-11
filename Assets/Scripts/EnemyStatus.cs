@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatus : MonoBehaviour
+public class EnemyStatus : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("体力")] int _hp = 1;
     [SerializeField, Tooltip("攻撃力")] int _attackPower = 1;
@@ -11,17 +11,39 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
     Rigidbody2D _rb2D = default;
 
+    bool _isMove = true;
     public int DropEXPValue { get => _dropEXPValue; }
 
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        GameManager.Instance.AddPauseObject(this);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _isMove = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            _isMove = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        var dir = (GameManager.Instance.Player.transform.position - transform.position).normalized * _moveSpeed;
-        _rb2D.velocity = dir;
+        if (_isMove)
+        {
+            var dir = (GameManager.Instance.Player.transform.position - transform.position).normalized * _moveSpeed;
+            _rb2D.velocity = dir;
+        }
+        else
+        {
+            _rb2D.velocity = Vector2.zero;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,5 +75,16 @@ public class EnemyStatus : MonoBehaviour
     public void Destroy()
     {
         gameObject.SetActive(false);
+    }
+
+    public void Pause()
+    {
+        _isMove = false;
+    }
+
+    public void Restart()
+    {
+
+        _isMove = true;
     }
 }

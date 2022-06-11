@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
@@ -14,7 +15,8 @@ public class GameManager : MonoBehaviour
     WeaponManager _weaponManager = default;
     CinemachineVirtualCamera _playerCamera;
     int[] _selectedCharacterStatus = new int[16];
-
+    /// <summary>ポーズするオブジェクト </summary>
+    List<IPause> _pauseObjects = new List<IPause>();
     public int[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
     /// <summary>生成されたプレイヤー </summary>
     public PlayerController Player { get => _player; set => _player = value; }
@@ -47,5 +49,24 @@ public class GameManager : MonoBehaviour
             _playerCamera.Follow = _player.transform;
             _weaponManager.GetWeapon(_selectedCharacterStatus[15], WeaponType.Weapon);
         }
+    }
+
+    /// <summary>ポーズをさせるオブジェクトを取得しリストに追加する </summary>
+    /// <param name="pause">ポーズさせるオブジェクト</param>
+    public void AddPauseObject(IPause pause)
+    {
+        _pauseObjects.Add(pause);
+    }
+
+    /// <summary>ポーズ</summary>
+    public void Pause()
+    {
+        Array.ForEach(_pauseObjects.ToArray(), p => p.Pause());
+    }
+
+    /// <summary>ポーズ解除 </summary>
+    public void Restart()
+    {
+        Array.ForEach(_pauseObjects.ToArray(), p => p.Restart());
     }
 }
