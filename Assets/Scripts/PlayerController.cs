@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         _nextLevelIndex++;
         _expSlider.value = 0;
+        GameManager.Instance.WeaponManager.SetSelectWeapons();
     }
 }
 

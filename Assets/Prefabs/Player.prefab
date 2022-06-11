@@ -624,6 +624,14 @@ MonoBehaviour:
   _nextLvUpEXP:
   - 50
   - 100
+  - 150
+  - 200
+  - 250
+  - 300
+  - 350
+  - 400
+  - 450
+  - 500
 --- !u!114 &1900346206
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("移動速度")] int _moveSpeed = 0;
     [SerializeField, Tooltip("生成数")] int _generatorNumber = 1;
     [SerializeField, Tooltip("最大レベル")] int _maxLevel = 9;
+    [SerializeField, Tooltip("レベルアップ時の強化　後で作り直す")] int[] _levelupstatus = default;
     /// <summary>武器のレベル </summary>
     int _currentLevel = 1;
     /// <summary>次の攻撃までの時間(間隔) </summary>
