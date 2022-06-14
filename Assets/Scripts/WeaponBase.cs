@@ -13,12 +13,15 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("レベルアップ時の強化　後で作り直す")] int[] _levelupstatus = default;
     /// <summary>武器のレベル </summary>
     int _currentLevel = 1;
+
+    static bool _isGenerate = true;
     /// <summary>次の攻撃までの時間(間隔) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
     /// <summary>移動速度</summary>
     public int MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     /// <summary>敵に与えるダメージ </summary>
     public int Damage { get => _damage; set => _damage = value; }
+    public static bool IsGenerate { get => _isGenerate; set => _isGenerate = value; }
 
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>
@@ -31,6 +34,11 @@ public abstract class WeaponBase : MonoBehaviour
     /// <param name="weaponObject">生成する武器</param>
     public void GameObjectGenerator()
     {
+        if (!_isGenerate)
+        {
+            return;
+        }
+
         for (var i = 0; i < _generatorNumber; i++)
         {
             var offsetX = Random.Range(-1.0f, 1.0f);

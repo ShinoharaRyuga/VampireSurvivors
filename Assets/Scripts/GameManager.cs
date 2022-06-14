@@ -37,6 +37,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Restart();
+        }
+    }
+
     public void GameSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "GameScene")
@@ -56,6 +69,11 @@ public class GameManager : MonoBehaviour
     public void AddPauseObject(IPause pause)
     {
         _pauseObjects.Add(pause);
+    }
+
+    public void RemovePauseObject(IPause obj)
+    {
+        _pauseObjects.Remove(obj);
     }
 
     /// <summary>É|Å[ÉY</summary>

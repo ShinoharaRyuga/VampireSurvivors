@@ -2,12 +2,16 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>武器種　ナイフ </summary>
-public class Knife : WeaponBase
+public class Knife : WeaponBase, IPause
 {
+    Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+
     private void OnBecameInvisible()
     {
+        GameManager.Instance.RemovePauseObject(this);
         Destroy(gameObject);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Attack(collision, true);
@@ -15,9 +19,9 @@ public class Knife : WeaponBase
 
     public override void Move()
     {
-        var rb2D = GetComponent<Rigidbody2D>();
+        GameManager.Instance.AddPauseObject(this);
         transform.up = GameManager.Instance.Player.transform.up;
-        rb2D.AddForce(GameManager.Instance.Player.transform.up * MoveSpeed, ForceMode2D.Impulse);
+        _rb2D.AddForce(GameManager.Instance.Player.transform.up * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public override IEnumerator Generator()
@@ -27,5 +31,17 @@ public class Knife : WeaponBase
             yield return new WaitForSeconds(AttackInterval);
             GameObjectGenerator();
         }
+    }
+
+    public void Pause()
+    {
+        _rb2D.velocity = Vector2.zero;  
+        IsGenerate = false;
+    }
+
+    public void Restart()
+    {
+        IsGenerate = true;
+        _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
     }
 }
