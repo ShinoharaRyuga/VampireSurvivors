@@ -2,10 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : WeaponBase
+public class Axe : WeaponBase, IPause
 {
     [SerializeField, Tooltip("ŽÎ‚ß•ûŒü‚É”ò‚Î‚·Žž‚ÌÅ‘å’l"), Range(0, 1)] float _maxX = 0;
     [SerializeField, Tooltip("ŽÎ‚ß•ûŒü‚É”ò‚Î‚·Žž‚ÌÅ¬’l"), Range(-1, 0)] float _minX = 0;
+    Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+
+    void Start()
+    {
+        GameManager.Instance.AddPauseObject(this);
+    }
+
+    private void OnBecameInvisible()
+    {
+        GameManager.Instance.RemovePauseObject(this);
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,9 +35,21 @@ public class Axe : WeaponBase
 
     public override void Move()
     {
-        var rb2D = GetComponent<Rigidbody2D>();
         var x = Random.Range(_minX, _maxX);
         var moveDir = new Vector2(x, 1).normalized;
-        rb2D.AddForce(moveDir * MoveSpeed, ForceMode2D.Impulse);
+        _rb2D.AddForce(moveDir * MoveSpeed, ForceMode2D.Impulse);
+    }
+
+    public void Pause()
+    {
+        _rb2D.velocity = Vector2.zero;
+        _rb2D.gravityScale = 0;
+        IsGenerate = false;
+    }
+
+    public void Restart()
+    {
+        _rb2D.gravityScale = 1;
+        IsGenerate = true;
     }
 }

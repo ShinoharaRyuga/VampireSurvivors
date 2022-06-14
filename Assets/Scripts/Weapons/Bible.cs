@@ -1,17 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bible : WeaponBase
+public class Bible : WeaponBase, IPause
 {
+    bool _isMove = true;
     Transform _playerTransform = default;
     Rigidbody2D _rb2D = default;
+    Bible _cloneBible = default;
 
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
     public Rigidbody2D Rb2D { get => _rb2D; set => _rb2D = value; }
 
+    void Start()
+    {
+        GameManager.Instance.AddPauseObject(this);
+    }
+
     private void Update()
     {
-        Move();
+        if (_isMove)
+        {
+            Move();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,9 +39,13 @@ public class Bible : WeaponBase
 
         while (true)
         {
+            yield return new WaitUntil(() => IsGenerate == true);
             yield return new WaitForSeconds(AttackInterval);
+            yield return new WaitUntil(() => IsGenerate == true);
             go.SetActive(true);
+            yield return new WaitUntil(() => IsGenerate == true);
             yield return new WaitForSeconds(2);
+            yield return new WaitUntil(() => IsGenerate == true);
             go.SetActive(false);
         }
     }
@@ -39,5 +53,17 @@ public class Bible : WeaponBase
     public override void Move()
     {
         _rb2D.MovePosition(new Vector2(3 * Mathf.Sin(Time.time * 3) + GameManager.Instance.Player.transform.position.x, 3 * Mathf.Cos(Time.time * 3) + GameManager.Instance.Player.transform.position.y));
+    }
+
+    public void Pause()
+    {
+        _isMove = false;
+        IsGenerate = false;
+    }
+
+    public void Restart()
+    {
+        _isMove = true;
+        IsGenerate = true;
     }
 }

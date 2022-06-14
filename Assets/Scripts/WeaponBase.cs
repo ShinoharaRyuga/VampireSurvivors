@@ -60,6 +60,7 @@ public abstract class WeaponBase : MonoBehaviour
             if (destroyFlag)    //“G‚É“–‚½‚Á‚½‚çíœ‚³‚ê‚é•Ší‚È‚çíœ‚·‚é
             {
                 Destroy(gameObject);
+                GameManager.Instance.RemovePauseObject(gameObject.GetComponent<IPause>());
             }
         }
     }
