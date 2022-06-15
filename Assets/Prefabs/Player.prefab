@@ -622,7 +622,7 @@ MonoBehaviour:
   _maxHp: 80
   _moveSpeed: 4
   _nextLvUpEXP:
-  - 50
+  - 1
   - 100
   - 150
   - 200

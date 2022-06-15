@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLevel: 9
-  _addMoveSpeed: 3
+  _addMoveSpeed: 2

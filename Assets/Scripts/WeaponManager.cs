@@ -1,10 +1,9 @@
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -22,13 +21,13 @@ public class WeaponManager : MonoBehaviour
         if (type == WeaponType.Weapon)
         {
             StartCoroutine(_weapons[index].Generator());
-          //  var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
-          //  StartCoroutine(go.Generator());
+            //  var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
+            //  StartCoroutine(go.Generator());
         }
-        //else
-        //{
-        //    StartCoroutine(_effectWeapon[index].Generator());
-        //}
+        else
+        {
+            _effectWeapon[index].Effect();
+        }
     }
 
     /// <summary>プレイヤーがレベルアップした時呼ばれてプレイヤーが選択する武器を選ぶ </summary>

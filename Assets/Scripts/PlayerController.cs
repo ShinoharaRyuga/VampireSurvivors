@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +8,12 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
-    [SerializeField, Tooltip("経験値バー")] Slider _expSlider = default;
     [SerializeField, Tooltip("最大体力")] int _maxHp = 0;
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 0;
     [SerializeField, Tooltip("テスト　あと作り直す")] float[] _nextLvUpEXP = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+    TextMeshProUGUI _levelText = default;
+    Slider _expBar = default;
     /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量,　クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
     float[] _characterStatusArray = new float[16];
     /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
@@ -35,8 +38,10 @@ public class PlayerController : MonoBehaviour, IPause
 
     void Start()
     {
-        _expSlider = GameObject.Find("EXPBar").GetComponent<Slider>();
+        _expBar = GameObject.Find("EXPBar").GetComponent<Slider>();
+        _levelText = GameObject.Find("LevelText").GetComponent<TextMeshProUGUI>();
         GameManager.Instance.AddPauseObject(this);
+        _levelText.text = $"Lv.{_currentLevel}";
         _currentHP = _maxHp;
     }
 
@@ -44,6 +49,11 @@ public class PlayerController : MonoBehaviour, IPause
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Array.ForEach(_characterStatusArray, s => Debug.Log(s));
+        }
     }
 
     void FixedUpdate()
@@ -80,7 +90,7 @@ public class PlayerController : MonoBehaviour, IPause
     public void GetEXP(int addEXP)
     {
         _currentEXP += addEXP;
-        _expSlider.value = (float)_currentEXP / _nextLvUpEXP[_nextLevelIndex];
+        _expBar.value = (float)_currentEXP / _nextLvUpEXP[_nextLevelIndex];
 
         if (_currentEXP >= _nextLvUpEXP[_nextLevelIndex])
         {
@@ -109,7 +119,9 @@ public class PlayerController : MonoBehaviour, IPause
     void LevelUp()
     {
         _nextLevelIndex++;
-        _expSlider.value = 0;
+        _currentLevel++;
+        _levelText.text = $"Lv.{_currentLevel}";
+        _expBar.value = 0;
         GameManager.Instance.WeaponManager.SetSelectWeapons();
         GameManager.Instance.Pause();
     }
