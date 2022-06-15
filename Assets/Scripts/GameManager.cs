@@ -61,6 +61,19 @@ public class GameManager : MonoBehaviour
             _playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
             _playerCamera.Follow = _player.transform;
             _weaponManager.GetWeapon((int)_selectedCharacterStatus[15], WeaponType.Weapon);
+            SetFirstWeaponLevel();
+        }
+    }
+
+    public void SetFirstWeaponLevel()
+    {
+        foreach (var data in GameData.SkillSelectTables)
+        {
+            if (data.Id == _selectedCharacterStatus[15])
+            {
+                data.Level++;
+                break;
+            }
         }
     }
 

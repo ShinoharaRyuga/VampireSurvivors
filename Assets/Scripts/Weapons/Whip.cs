@@ -63,6 +63,11 @@ public class Whip : WeaponBase, IPause
         }
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"•Ú{level}");
+    }
+
     public void Pause()
     {
         IsGenerate = false;

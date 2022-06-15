@@ -11,9 +11,6 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("生成数")] int _generatorNumber = 1;
     [SerializeField, Tooltip("最大レベル")] int _maxLevel = 9;
     [SerializeField, Tooltip("レベルアップ時の強化　後で作り直す")] int[] _levelupstatus = default;
-    /// <summary>武器のレベル </summary>
-    int _currentLevel = 1;
-
     static bool _isGenerate = true;
     /// <summary>次の攻撃までの時間(間隔) </summary>
     public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
@@ -22,6 +19,7 @@ public abstract class WeaponBase : MonoBehaviour
     /// <summary>敵に与えるダメージ </summary>
     public int Damage { get => _damage; set => _damage = value; }
     public static bool IsGenerate { get => _isGenerate; set => _isGenerate = value; }
+    public int MaxLevel { get => _maxLevel; set => _maxLevel = value; }
 
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>
@@ -29,6 +27,8 @@ public abstract class WeaponBase : MonoBehaviour
 
     /// <summary>一定間隔ごとに武器を生成する </summary>
     public abstract IEnumerator Generator();
+
+    public abstract void LevelUp(int level);
 
     /// <summary>決められた数武器を生成する </summary>
     /// <param name="weaponObject">生成する武器</param>

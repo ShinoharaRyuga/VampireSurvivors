@@ -141,5 +141,5 @@ MonoBehaviour:
   _knockBackPower: 0
   _moveSpeed: 8
   _generatorNumber: 3
-  _maxLevel: 9
+  _maxLevel: 3
   _levelupstatus: 

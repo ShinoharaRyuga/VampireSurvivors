@@ -618,20 +618,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpSlider: {fileID: 1207258231}
-  _expSlider: {fileID: 0}
   _maxHp: 80
   _moveSpeed: 4
   _nextLvUpEXP:
   - 1
+  - 10
+  - 30
+  - 40
+  - 50
+  - 60
+  - 70
+  - 80
+  - 90
   - 100
-  - 150
-  - 200
-  - 250
-  - 300
-  - 350
-  - 400
-  - 450
-  - 500
 --- !u!114 &1900346206
 MonoBehaviour:
   m_ObjectHideFlags: 0

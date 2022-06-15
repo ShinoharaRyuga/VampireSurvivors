@@ -55,6 +55,11 @@ public class Garlic : WeaponBase, IPause
         }
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"ƒjƒ“ƒjƒN{level}");
+    }
+
     public void Pause()
     {
        _isPause = false;

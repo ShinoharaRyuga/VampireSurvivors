@@ -30,6 +30,22 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            foreach (var data in GameData.SkillSelectTables)
+            {
+                Debug.Log($"{data.Name} {data.Level}");
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log(_weapons[0].MaxLevel);
+        }
+    }
+
     /// <summary>プレイヤーがレベルアップした時呼ばれてプレイヤーが選択する武器を選ぶ </summary>
     public void SetSelectWeapons()
     {
@@ -37,11 +53,11 @@ public class WeaponManager : MonoBehaviour
         var totalProb = GameData.SkillSelectTables.Sum(x => x.Probability);
         var rand = UnityEngine.Random.Range(0, totalProb);
 
-        while (selectedWeapons.Count < 4)　  //選択可能なぶ武器を選出する
+        while (selectedWeapons.Count < 4)　  //選択可能な武器を選出する
         {
             foreach (var data in GameData.SkillSelectTables)
             {
-                if (rand < data.Probability && !selectedWeapons.Contains(data))
+                if (rand < data.Probability && !selectedWeapons.Contains(data) &&  data.Level < _weapons[data.Id].MaxLevel)
                 {
                     selectedWeapons.Add(data);
                     rand = UnityEngine.Random.Range(0, totalProb);
@@ -53,9 +69,8 @@ public class WeaponManager : MonoBehaviour
 
         for (var i = 0; i < 4; i++)　//ボタンに関数を追加する
         {
-            var id = selectedWeapons[i].Id;
-            var type = selectedWeapons[i].Type;
-            _skillSelectButtons[i].onClick.AddListener(() => SelectSkill(id, type));
+            var weapon = selectedWeapons[i];
+            _skillSelectButtons[i].onClick.AddListener(() => SelectSkill(weapon));
             _skillSelectButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = selectedWeapons[i].Name;
         }
         _skillSelectCanvas.SetActive(true);
@@ -64,9 +79,26 @@ public class WeaponManager : MonoBehaviour
     /// <summary>武器選択ボタンのOnClickに追加される </summary>
     /// <param name="index">選択された武器</param>
     /// <param name="type">武器のタイプ</param>
-    private void SelectSkill(int index, WeaponType type)
+    private void SelectSkill(SkillSelectTable skill)
     {
-        GetWeapon(index, type);
+        skill.Level++;
+        if (skill.Level == 1) 
+        {
+            GetWeapon(skill.Id, skill.Type);
+        }
+        else
+        {
+            if (skill.Type == WeaponType.Weapon)
+            {
+                _weapons[skill.Id].LevelUp(skill.Level);
+            }
+            else
+            {
+                //   _effectWeapon[index].LevelUp(level);
+            }
+        }
+
+        //ifで選択出来ないようにする
         _skillSelectCanvas.SetActive(false);
         GameManager.Instance.Restart();
         Array.ForEach(_skillSelectButtons, b => b.onClick.RemoveAllListeners());

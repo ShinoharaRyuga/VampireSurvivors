@@ -38,6 +38,11 @@ public class MagicWand : WeaponBase, IPause
         }
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"–‚–@‚Ìñ{level}");
+    }
+
     public void Pause()
     {
         _rb2D.velocity = Vector2.zero;

@@ -33,6 +33,11 @@ public class Knife : WeaponBase, IPause
         }
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"ƒiƒCƒt{level}");
+    }
+
     public void Pause()
     {
         _rb2D.velocity = Vector2.zero;  

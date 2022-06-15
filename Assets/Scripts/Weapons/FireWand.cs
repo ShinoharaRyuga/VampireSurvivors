@@ -38,6 +38,11 @@ public class FireWand : WeaponBase, IPause
         _rb2D.AddForce(dir.normalized * MoveSpeed, ForceMode2D.Impulse);
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"âäÇÃèÒ{level}");
+    }
+
     public void Pause()
     {
         _rb2D.velocity = Vector2.zero;

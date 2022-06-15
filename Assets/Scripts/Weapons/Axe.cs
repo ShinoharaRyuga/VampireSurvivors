@@ -33,6 +33,11 @@ public class Axe : WeaponBase, IPause
         }
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"ÉIÉm{level}");
+    }
+
     public override void Move()
     {
         var x = Random.Range(_minX, _maxX);

@@ -55,6 +55,11 @@ public class Bible : WeaponBase, IPause
         _rb2D.MovePosition(new Vector2(3 * Mathf.Sin(Time.time * 3) + GameManager.Instance.Player.transform.position.x, 3 * Mathf.Cos(Time.time * 3) + GameManager.Instance.Player.transform.position.y));
     }
 
+    public override void LevelUp(int level)
+    {
+        Debug.Log($"êπèë{level}");
+    }
+
     public void Pause()
     {
         _isMove = false;
