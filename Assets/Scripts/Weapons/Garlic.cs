@@ -42,7 +42,6 @@ public class Garlic : WeaponBase, IPause
 
     public override IEnumerator Generator()
     {
-        Debug.Log("s");
         while (true)
         {
             _isActive = true;

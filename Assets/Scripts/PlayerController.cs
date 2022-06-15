@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour, IPause
     [SerializeField, Tooltip("テスト　あと作り直す")] float[] _nextLvUpEXP = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量,　クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
-    int[] _characterStatusArray = new int[16];
+    float[] _characterStatusArray = new float[16];
     /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
     int[] _selectedWeapons = new int[6];
     int[] _selectedEffectWeapons = new int[6];
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IPause
     float _vertical = 0f;
     bool _isMove = true;
 
-    public int[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
+    public float[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
     public int MaxHp { get => _maxHp; set => _maxHp = value; }
 
     void Start()
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour, IPause
     {
         if (_isMove)
         {
-            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _moveSpeed;
+            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _characterStatusArray[3];
             if (dir != Vector2.zero)
             {
                 transform.up = dir;

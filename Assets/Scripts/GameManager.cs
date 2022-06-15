@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     EXPSpawner _expSpawner = default;
     WeaponManager _weaponManager = default;
     CinemachineVirtualCamera _playerCamera;
-    int[] _selectedCharacterStatus = new int[16];
+    float[] _selectedCharacterStatus = new float[16];
     /// <summary>ポーズするオブジェクト </summary>
     List<IPause> _pauseObjects = new List<IPause>();
-    public int[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
+    public float[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
     /// <summary>生成されたプレイヤー </summary>
     public PlayerController Player { get => _player; set => _player = value; }
     public EXPSpawner ExpSpawner { get => _expSpawner; set => _expSpawner = value; }
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             _weaponManager = GameObject.Find("WeaponManager").GetComponent<WeaponManager>();
             _playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
             _playerCamera.Follow = _player.transform;
-            _weaponManager.GetWeapon(_selectedCharacterStatus[15], WeaponType.Weapon);
+            _weaponManager.GetWeapon((int)_selectedCharacterStatus[15], WeaponType.Weapon);
         }
     }
 
