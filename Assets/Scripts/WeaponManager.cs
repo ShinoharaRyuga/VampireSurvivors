@@ -21,9 +21,9 @@ public class WeaponManager : MonoBehaviour
         GameManager.Instance.Player.SetWeaponIndex(index, type);
         if (type == WeaponType.Weapon)
         {
-         //   StartCoroutine(_weapons[index].Generator());
-            var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
-            StartCoroutine(go.Generator());
+            StartCoroutine(_weapons[index].Generator());
+          //  var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
+          //  StartCoroutine(go.Generator());
         }
         //else
         //{
