@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IPause
     /// <summary>現在のレベル </summary>
     int _currentLevel = 1;
     /// <summary>次のレベルアップまでにかかる値の配列の添え字</summary>
-    int _nextLevelEXP = 30;
+    int _nextLevelEXP = 0;
     int _weaponCount = 0;
     int _effectWeaponCount = 0;
     float _horizontal = 0f;
@@ -50,12 +50,10 @@ public class PlayerController : MonoBehaviour, IPause
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (_isMove)
         {
-            Array.ForEach(_characterStatusArray, s => Debug.Log(s));
+            ChangeImage();
         }
-
-        ChangeImage();
     }
 
     void FixedUpdate()

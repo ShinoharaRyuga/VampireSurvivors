@@ -10,7 +10,7 @@ public class EnemyStatus : MonoBehaviour, IPause
     [SerializeField, Tooltip("死亡時に落とす経験値の値")] int _dropEXPValue = 1;
     [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
     Rigidbody2D _rb2D = default;
-
+    Animator _anim => GetComponent<Animator>();
     bool _isMove = true;
     public int DropEXPValue { get => _dropEXPValue; }
 
@@ -59,7 +59,7 @@ public class EnemyStatus : MonoBehaviour, IPause
     public void GetDamage(int damage)
     {
         _hp -= damage;
-
+        _anim.SetTrigger("Damage");
         if (_hp <= 0)   //死亡
         {
             GameManager.Instance.ExpSpawner.Instantiate(transform);

@@ -35,7 +35,7 @@ public class Axe : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        Debug.Log($"ÉIÉm{level}");
+        GeneratorNumber++;
     }
 
     public override void Move()

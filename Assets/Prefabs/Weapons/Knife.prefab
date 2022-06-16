@@ -210,7 +210,7 @@ MonoBehaviour:
   _knockBackPower: 0
   _moveSpeed: 5
   _generatorNumber: 1
-  _maxLevel: 3
+  _maxLevel: 9
   _levelupstatus: 
 --- !u!61 &538311835
 BoxCollider2D:

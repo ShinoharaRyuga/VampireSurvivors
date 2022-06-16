@@ -50,7 +50,7 @@ public class EnemySpawner : ObjectPool, IPause
 
     public void AddEnemyNumber()
     {
-        _generationNumber += 5;
+        _generationNumber += 2;
         _generationTime -= 0.1f;
     }
 

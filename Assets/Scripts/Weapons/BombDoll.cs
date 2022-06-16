@@ -22,8 +22,9 @@ public class BombDoll : WeaponBase, IPause
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Attack();
-            GameManager.Instance.RemovePauseObject(this);
+            collision.GetComponent<EnemyStatus>().GetDamage(Damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
+            Move();
+            //GameManager.Instance.RemovePauseObject(this);
         }
     }
 
@@ -50,21 +51,8 @@ public class BombDoll : WeaponBase, IPause
     public override void Move()
     {
         var findEnemy = GameManager.Instance.Player.gameObject.GetComponent<FindEnemy>();
-        var dir = findEnemy.GetRandomEnemy() - transform.position;
+        var dir = findEnemy.GetMostNearEnemy() - transform.position;
         _rb2D.AddForce(dir.normalized * MoveSpeed, ForceMode2D.Impulse);
-    }
-
-    public void Attack()
-    {
-        var enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _targetLayerMask);
-     
-        foreach (var enemy in enemies)
-        {
-            enemy.GetComponent<EnemyStatus>().GetDamage(Damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
-            Debug.Log(Damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
-        }
-
-        Destroy(gameObject);
     }
 
     public void Pause()

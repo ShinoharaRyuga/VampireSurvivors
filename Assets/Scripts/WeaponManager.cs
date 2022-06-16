@@ -20,10 +20,14 @@ public class WeaponManager : MonoBehaviour
         GameManager.Instance.Player.SetWeaponIndex(index, type);
         if (type == WeaponType.Weapon)
         {
+            if (index == 5)
+            {
+                var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
+                StartCoroutine(go.Generator());
+                return;
+            }
+
             StartCoroutine(_weapons[index].Generator());
-            Debug.Log(_weapons[index]);
-            //  var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
-            //  StartCoroutine(go.Generator());
         }
         else
         {
@@ -31,19 +35,11 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ResetWeapons()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        foreach (var weapon in _weapons)
         {
-            foreach (var data in GameData.SkillSelectTables)
-            {
-                Debug.Log($"{data.Name} {data.Level}");
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log(_weapons[0].MaxLevel);
+            weapon.GeneratorNumber = 1;
         }
     }
 
@@ -58,7 +54,7 @@ public class WeaponManager : MonoBehaviour
         {
             foreach (var data in GameData.SkillSelectTables)
             {
-                if (rand < data.Probability && !selectedWeapons.Contains(data) &&  data.Level < _weapons[data.Id].MaxLevel)
+                if (rand < data.Probability && !selectedWeapons.Contains(data) && data.Level < _weapons[data.Id].MaxLevel)
                 {
                     selectedWeapons.Add(data);
                     rand = UnityEngine.Random.Range(0, totalProb);
@@ -83,10 +79,9 @@ public class WeaponManager : MonoBehaviour
     private void SelectSkill(SkillSelectTable skill)
     {
         skill.Level++;
-        if (skill.Level == 1) 
+        if (skill.Level == 1)
         {
             GetWeapon(skill.Id, skill.Type);
-            Debug.Log(skill.Name);
         }
         else
         {
@@ -96,7 +91,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                //   _effectWeapon[index].LevelUp(level);
+                   _effectWeapon[skill.Id].LevelUp();
             }
         }
 

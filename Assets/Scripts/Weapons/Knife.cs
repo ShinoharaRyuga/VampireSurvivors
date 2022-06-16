@@ -35,7 +35,7 @@ public class Knife : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        Debug.Log($"ƒiƒCƒt{level}");
+        GeneratorNumber++;
     }
 
     public void Pause()

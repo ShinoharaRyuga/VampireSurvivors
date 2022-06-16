@@ -70,7 +70,13 @@ public class GameManager : MonoBehaviour
             _judgementCanvas.SetActive(false);
             _playerCamera.Follow = _player.transform;
             _weaponManager.GetWeapon((int)_selectedCharacterStatus[15], WeaponType.Weapon);
+            _weaponManager.ResetWeapons();
             SetFirstWeaponLevel();
+        }
+        else
+        {
+            _expSpawner = null;
+            _weaponManager = null;
         }
     }
 
@@ -86,6 +92,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetWeaponLevel()
+    {
+        foreach (var data in GameData.SkillSelectTables)
+        {
+            data.Level = 0;
+        }
+
+        WeaponBase.IsGenerate = true;
+    }
+    
     public void GameOver()
     {
         _gameCanvas.SetActive(false);

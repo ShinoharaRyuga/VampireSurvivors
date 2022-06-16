@@ -20,6 +20,7 @@ public abstract class WeaponBase : MonoBehaviour
     public int Damage { get => _damage; set => _damage = value; }
     public static bool IsGenerate { get => _isGenerate; set => _isGenerate = value; }
     public int MaxLevel { get => _maxLevel; set => _maxLevel = value; }
+    public int GeneratorNumber { get => _generatorNumber; set => _generatorNumber = value; }
 
     /// <summary>オブジェクトの動き </summary>
     /// <param name="vector3">進行方向</param>
