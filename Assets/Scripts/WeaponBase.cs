@@ -39,7 +39,7 @@ public abstract class WeaponBase : MonoBehaviour
             return;
         }
 
-        for (var i = 0; i < _generatorNumber; i++)
+        for (var i = 0; i < _generatorNumber + GameManager.Instance.Player.CharacterStatusArray[8]; i++)
         {
             var offsetX = Random.Range(-1.0f, 1.0f);
             var offsetY = Random.Range(-1.0f, 1.0f);
@@ -55,7 +55,7 @@ public abstract class WeaponBase : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
-            enemyStatus.GetDamage(_damage);
+            enemyStatus.GetDamage(_damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
 
             if (destroyFlag)    //“G‚É“–‚½‚Á‚½‚çíœ‚³‚ê‚é•Ší‚È‚çíœ‚·‚é
             {

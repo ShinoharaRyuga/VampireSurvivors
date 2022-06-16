@@ -21,6 +21,7 @@ public class WeaponManager : MonoBehaviour
         if (type == WeaponType.Weapon)
         {
             StartCoroutine(_weapons[index].Generator());
+            Debug.Log(_weapons[index]);
             //  var go = Instantiate(_weapons[5], GameManager.Instance.Player.transform);
             //  StartCoroutine(go.Generator());
         }
@@ -85,6 +86,7 @@ public class WeaponManager : MonoBehaviour
         if (skill.Level == 1) 
         {
             GetWeapon(skill.Id, skill.Type);
+            Debug.Log(skill.Name);
         }
         else
         {

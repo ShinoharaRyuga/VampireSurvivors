@@ -8,13 +8,11 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
-    [SerializeField, Tooltip("最大体力")] int _maxHp = 0;
-    [SerializeField, Tooltip("移動速度")] float _moveSpeed = 0;
     [SerializeField, Tooltip("テスト　あと作り直す")] float[] _nextLvUpEXP = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     TextMeshProUGUI _levelText = default;
     Slider _expBar = default;
-    /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量,　クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
+    /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量, クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
     float[] _characterStatusArray = new float[16];
     /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
     int[] _selectedWeapons = new int[6];
@@ -34,15 +32,13 @@ public class PlayerController : MonoBehaviour, IPause
     bool _isMove = true;
 
     public float[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
-    public int MaxHp { get => _maxHp; set => _maxHp = value; }
-
     void Start()
     {
         _expBar = GameObject.Find("EXPBar").GetComponent<Slider>();
         _levelText = GameObject.Find("LevelText").GetComponent<TextMeshProUGUI>();
         GameManager.Instance.AddPauseObject(this);
         _levelText.text = $"Lv.{_currentLevel}";
-        _currentHP = _maxHp;
+        _currentHP = (int)_characterStatusArray[0];
     }
 
     void Update()
@@ -81,8 +77,15 @@ public class PlayerController : MonoBehaviour, IPause
     /// <param name="damage">被ダメージ</param>
     public void GetDamage(int damage)
     {
+        damage -= (int)_characterStatusArray[2];
+
+        if (damage < 0)
+        {
+            damage = 1;
+        }
+        
         _currentHP -= damage;
-        _hpSlider.value = (float)_currentHP / (float)_maxHp;
+        _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
     }
 
     /// <summary>経験値を受け取る </summary>
@@ -95,6 +98,15 @@ public class PlayerController : MonoBehaviour, IPause
         if (_currentEXP >= _nextLvUpEXP[_nextLevelIndex])
         {
             LevelUp();
+        }
+    }
+
+    public void Heel(int addValue)
+    {
+        if (_currentHP < _characterStatusArray[0])
+        {
+            _currentHP += addValue;
+            _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
         }
     }
 

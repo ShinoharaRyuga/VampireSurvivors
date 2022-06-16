@@ -139,7 +139,7 @@ MonoBehaviour:
   _attackInterval: 2
   _damage: 10
   _knockBackPower: 0
-  _moveSpeed: 8
+  _moveSpeed: 5
   _generatorNumber: 3
   _maxLevel: 3
   _levelupstatus: 

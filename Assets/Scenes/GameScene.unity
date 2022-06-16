@@ -626,7 +626,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758007, y: 1}
+    m_SensorSize: {x: 1.775281, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1427,6 +1427,7 @@ MonoBehaviour:
   - {fileID: 7234612961036920309, guid: 7c607e79d3ad9bb4498ae3611bef4672, type: 3}
   - {fileID: 7815641980705791193, guid: 1806fe9468d06a44fa889e5b7326b3b4, type: 3}
   - {fileID: 3362159761318039317, guid: 4d1f9b1393a02ef468d48edd678ab9fc, type: 3}
+  - {fileID: 7203540974990431063, guid: 0929d3b09c5a5814786def8edc5357c8, type: 3}
   _skillSelectCanvas: {fileID: 855123818}
   _skillSelectButtons:
   - {fileID: 167561013}

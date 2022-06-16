@@ -1256,9 +1256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
-  - 0
+  - 10
+  - 0.5
+  - 1
   - 4
   - 0
   - 0
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 0.5
   - 0
 --- !u!1 &516887313
 GameObject:
@@ -1868,7 +1868,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 10
   - 4
 --- !u!1 &972536898
 GameObject:
