@@ -32363,7 +32363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMeshProUGUI: {fileID: 1249959686}
-  _clearTime: 1
+  _enemySpawner: {fileID: 989584010}
+  _clearTime: 15
 --- !u!4 &1607708210
 Transform:
   m_ObjectHideFlags: 0

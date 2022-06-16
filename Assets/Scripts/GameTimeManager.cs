@@ -8,6 +8,7 @@ public class GameTimeManager : MonoBehaviour, IPause
     private const int UPDATE_MINUTES_TIME = 59;
 
     [SerializeField, Tooltip("時間を表示するテキスト")] TextMeshProUGUI _textMeshProUGUI = default;
+    [SerializeField, Tooltip("敵のスポナー")] EnemySpawner _enemySpawner = default;
     [SerializeField, Tooltip("クリアタイム")] float _clearTime = 1f;
     int _minutes = 0;
     int _seconds = 0;
@@ -37,6 +38,7 @@ public class GameTimeManager : MonoBehaviour, IPause
                 if (_seconds >= UPDATE_MINUTES_TIME)
                 {
                     _seconds = 0;
+                    _enemySpawner.AddEnemyNumber();
                     _minutes++;
                 }
 

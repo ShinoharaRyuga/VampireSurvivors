@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
-    [SerializeField, Tooltip("テスト　あと作り直す")] float[] _nextLvUpEXP = default;
     [SerializeField, Tooltip("上下左右のスプライト")] Sprite[] _playerSprites = default;
+    [SerializeField, Tooltip("次に必要なEXP(増やす量)")] int _addNextEXP = 50;
     [SerializeField] SpriteRenderer _spriteRenderer = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     TextMeshProUGUI _levelText = default;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IPause
     /// <summary>現在のレベル </summary>
     int _currentLevel = 1;
     /// <summary>次のレベルアップまでにかかる値の配列の添え字</summary>
-    int _nextLevelIndex = 0;
+    int _nextLevelEXP = 30;
     int _weaponCount = 0;
     int _effectWeaponCount = 0;
     float _horizontal = 0f;
@@ -105,9 +105,9 @@ public class PlayerController : MonoBehaviour, IPause
     public void GetEXP(int addEXP)
     {
         _currentEXP += addEXP;
-        _expBar.value = (float)_currentEXP / _nextLvUpEXP[_nextLevelIndex];
+        _expBar.value = (float)_currentEXP / _nextLevelEXP;
 
-        if (_currentEXP >= _nextLvUpEXP[_nextLevelIndex])
+        if (_currentEXP >= _nextLevelEXP)
         {
             LevelUp();
         }
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour, IPause
     /// <summary>一定以上の経験値が貯まったらプレイヤーのレベルを上げる </summary>
     void LevelUp()
     {
-        _nextLevelIndex++;
+        _nextLevelEXP += _addNextEXP * _currentLevel;
         _currentLevel++;
         _levelText.text = $"Lv.{_currentLevel}";
         _expBar.value = 0;

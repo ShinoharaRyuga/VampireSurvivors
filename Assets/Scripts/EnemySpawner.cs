@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class EnemySpawner : ObjectPool, IPause
 {
     bool _isMove = true;
+    int _generationNumber = 1;
+    float _generationTime = 2f;
     void Start()
     {
         SetUp();
@@ -30,23 +32,26 @@ public class EnemySpawner : ObjectPool, IPause
 
     public override Vector2 SetPopPos()
     {
-        var popX = Random.Range(-10, 10);
-        var popY = Random.Range(-10, 10);
+        var popX = Random.Range(-20, 20);
+        var popY = Random.Range(-20, 20);
         var popPos = new Vector2(GameManager.Instance.Player.transform.position.x + popX, GameManager.Instance.Player.transform.position.y + popY);
         return popPos;
-
-        //var rightTop = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        //var leftBottom = Camera.main.ScreenToWorldPoint(Vector3.zero);
     }
 
     IEnumerator Generator()
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(_generationTime);
             yield return new WaitUntil(() => _isMove == true);
-            Instantiate(transform);
+            EnemyGenerator();
         }
+    }
+
+    public void AddEnemyNumber()
+    {
+        _generationNumber += 5;
+        _generationTime -= 0.1f;
     }
 
     public void Pause()
@@ -57,5 +62,13 @@ public class EnemySpawner : ObjectPool, IPause
     public void Restart()
     { 
         _isMove = true;
+    }
+
+    private void EnemyGenerator()
+    {
+        for (var i = 0; i < _generationNumber; i++)
+        {
+            Instantiate(transform);
+        }
     }
 }
