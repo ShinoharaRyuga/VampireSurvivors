@@ -12,7 +12,7 @@ public class Axe : WeaponBase, IPause
     {
         GameManager.Instance.AddPauseObject(this);
     }
-
+   
     private void OnBecameInvisible()
     {
         GameManager.Instance.RemovePauseObject(this);

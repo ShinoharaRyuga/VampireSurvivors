@@ -51,8 +51,7 @@ public class BombDoll : WeaponBase, IPause
     {
         var findEnemy = GameManager.Instance.Player.gameObject.GetComponent<FindEnemy>();
         var dir = findEnemy.GetRandomEnemy() - transform.position;
-        transform.up = dir.normalized;
-        _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
+        _rb2D.AddForce(dir.normalized * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public void Attack()

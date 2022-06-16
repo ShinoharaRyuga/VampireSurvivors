@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
     [SerializeField, Tooltip("テスト　あと作り直す")] float[] _nextLvUpEXP = default;
+    [SerializeField, Tooltip("上下左右のスプライト")] Sprite[] _playerSprites = default;
+    [SerializeField] SpriteRenderer _spriteRenderer = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     TextMeshProUGUI _levelText = default;
     Slider _expBar = default;
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour, IPause
         {
             Array.ForEach(_characterStatusArray, s => Debug.Log(s));
         }
+
+        ChangeImage();
     }
 
     void FixedUpdate()
@@ -61,7 +65,7 @@ public class PlayerController : MonoBehaviour, IPause
             Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _characterStatusArray[3];
             if (dir != Vector2.zero)
             {
-                transform.up = dir;
+                 transform.up = dir;
                 _rb2D.velocity = dir;
             }
             else
@@ -132,6 +136,28 @@ public class PlayerController : MonoBehaviour, IPause
         {
             _selectedEffectWeapons[_effectWeaponCount] = index;
             _effectWeaponCount++;
+        }
+    }
+
+    public void ChangeImage()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            _spriteRenderer.sprite = _playerSprites[1];
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            _spriteRenderer.sprite = _playerSprites[0];
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            _spriteRenderer.sprite = _playerSprites[2];
+            _spriteRenderer.flipX = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            _spriteRenderer.sprite = _playerSprites[2];
+            _spriteRenderer.flipX = true;
         }
     }
 
