@@ -2092,7 +2092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\u30DC\u30E0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50636a20f3280c4b8d181d647425515, type: 2}
   m_sharedMaterial: {fileID: 9142180944433247935, guid: e50636a20f3280c4b8d181d647425515, type: 2}
@@ -4073,7 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
+  - 10
   - 0
   - 0
   - 4
@@ -4088,7 +4088,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 8
 --- !u!1 &2023803933
 GameObject:
   m_ObjectHideFlags: 0
