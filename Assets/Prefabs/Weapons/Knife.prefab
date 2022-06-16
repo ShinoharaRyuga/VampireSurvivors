@@ -140,6 +140,6 @@ MonoBehaviour:
   _damage: 10
   _knockBackPower: 0
   _moveSpeed: 5
-  _generatorNumber: 3
+  _generatorNumber: 1
   _maxLevel: 3
   _levelupstatus: 

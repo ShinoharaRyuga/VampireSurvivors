@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour, IPause
     bool _isMove = true;
 
     public float[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
+    public int CurrentLevel { get => _currentLevel; }
+
     void Start()
     {
         _expBar = GameObject.Find("EXPBar").GetComponent<Slider>();
@@ -77,15 +79,21 @@ public class PlayerController : MonoBehaviour, IPause
     /// <param name="damage">被ダメージ</param>
     public void GetDamage(int damage)
     {
-        damage -= (int)_characterStatusArray[2];
+        //damage -= (int)_characterStatusArray[2];
 
-        if (damage < 0)
-        {
-            damage = 1;
-        }
-        
+        //if (damage < 0)
+        //{
+        //    damage = 1;
+          
+        //}
+      
         _currentHP -= damage;
         _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
+
+        if (_currentHP <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
     /// <summary>経験値を受け取る </summary>

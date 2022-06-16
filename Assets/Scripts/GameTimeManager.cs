@@ -8,10 +8,14 @@ public class GameTimeManager : MonoBehaviour, IPause
     private const int UPDATE_MINUTES_TIME = 59;
 
     [SerializeField, Tooltip("時間を表示するテキスト")] TextMeshProUGUI _textMeshProUGUI = default;
+    [SerializeField, Tooltip("クリアタイム")] float _clearTime = 1f;
     int _minutes = 0;
     int _seconds = 0;
     float _time = 0;
     bool _isPause = false;
+
+    public int Minutes { get => _minutes; }
+    public int Seconds { get => _seconds; }
 
     void Start()
     {
@@ -37,6 +41,11 @@ public class GameTimeManager : MonoBehaviour, IPause
                 }
 
                 _textMeshProUGUI.text = $"{_minutes}:{_seconds.ToString("D2")}";
+            }
+
+            if (_minutes >= _clearTime)
+            {
+                GameManager.Instance.GameClear();
             }
         }       
     }
