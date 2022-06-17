@@ -9,8 +9,10 @@ public class EnemyStatus : MonoBehaviour, IPause
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 1f;
     [SerializeField, Tooltip("死亡時に落とす経験値の値")] int _dropEXPValue = 1;
     [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
+    [SerializeField, Tooltip("ダメージSE")] AudioClip _damageSE = default;
     Rigidbody2D _rb2D = default;
     Animator _anim => GetComponent<Animator>();
+    AudioSource _audioSource => GetComponent<AudioSource>();
     bool _isMove = true;
     public int DropEXPValue { get => _dropEXPValue; }
 
@@ -60,8 +62,10 @@ public class EnemyStatus : MonoBehaviour, IPause
     {
         _hp -= damage;
         _anim.SetTrigger("Damage");
+        _audioSource.PlayOneShot(_damageSE);
         if (_hp <= 0)   //死亡
         {
+        
             GameManager.Instance.ExpSpawner.Instantiate(transform);
             gameObject.SetActive(false);
         }

@@ -219,7 +219,7 @@ RectTransform:
   - {fileID: 1743124972}
   - {fileID: 861790515}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u97AD"
+  m_text: "\u30E0\u30C1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50636a20f3280c4b8d181d647425515, type: 2}
   m_sharedMaterial: {fileID: 9142180944433247935, guid: e50636a20f3280c4b8d181d647425515, type: 2}
@@ -997,6 +997,7 @@ RectTransform:
   - {fileID: 1667037158}
   - {fileID: 507512655}
   - {fileID: 191822155}
+  - {fileID: 2059534848}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1087,6 +1088,7 @@ GameObject:
   - component: {fileID: 510546394}
   - component: {fileID: 510546393}
   - component: {fileID: 510546396}
+  - component: {fileID: 510546397}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -1171,6 +1173,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &510546394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,6 +1252,21 @@ MonoBehaviour:
   - 0
   - 0
   - 1
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u9B54\u6CD5\u306E\u6756"
+--- !u!114 &510546397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510546391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &510721801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1280,7 @@ GameObject:
   - component: {fileID: 510721804}
   - component: {fileID: 510721803}
   - component: {fileID: 510721806}
+  - component: {fileID: 510721807}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -1335,6 +1365,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &510721804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,6 +1444,21 @@ MonoBehaviour:
   - 0
   - 0.5
   - 0
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u30CA\u30A4\u30D5"
+--- !u!114 &510721807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510721801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &516887313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1742,7 @@ GameObject:
   - component: {fileID: 676992520}
   - component: {fileID: 676992519}
   - component: {fileID: 676992522}
+  - component: {fileID: 676992523}
   m_Layer: 5
   m_Name: Button (6)
   m_TagString: Untagged
@@ -1769,6 +1827,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &676992520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,6 +1906,21 @@ MonoBehaviour:
   - 0
   - 0
   - 2
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u708E\u306E\u6756"
+--- !u!114 &676992523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676992517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &718578253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +2010,7 @@ GameObject:
   - component: {fileID: 779412375}
   - component: {fileID: 779412374}
   - component: {fileID: 779412377}
+  - component: {fileID: 779412378}
   m_Layer: 5
   m_Name: Button (8)
   m_TagString: Untagged
@@ -2009,6 +2095,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &779412375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2076,6 +2174,21 @@ MonoBehaviour:
   - 0
   - 0
   - 4
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u30AA\u30CE"
+--- !u!114 &779412378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779412372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &861790514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,6 +2201,7 @@ GameObject:
   - component: {fileID: 861790518}
   - component: {fileID: 861790517}
   - component: {fileID: 861790516}
+  - component: {fileID: 861790519}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2196,6 +2310,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 861790519}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &861790517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,6 +2360,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861790514}
   m_CullTransparentMesh: 1
+--- !u!114 &861790519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861790514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &909728632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,13 +2732,14 @@ GameObject:
   - component: {fileID: 1112426679}
   - component: {fileID: 1112426678}
   - component: {fileID: 1112426681}
+  - component: {fileID: 1112426682}
   m_Layer: 5
   m_Name: Button (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1112426677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2677,6 +2817,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1112426679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,6 +2896,21 @@ MonoBehaviour:
   - 0
   - 0
   - 6
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u30E0\u30C1"
+--- !u!114 &1112426682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112426676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &1191898510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,6 +2924,7 @@ GameObject:
   - component: {fileID: 1191898513}
   - component: {fileID: 1191898512}
   - component: {fileID: 1191898515}
+  - component: {fileID: 1191898516}
   m_Layer: 5
   m_Name: Button (7)
   m_TagString: Untagged
@@ -2841,6 +3009,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1191898513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2908,6 +3088,21 @@ MonoBehaviour:
   - 0
   - 0
   - 3
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u8056\u66F8"
+--- !u!114 &1191898516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191898510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &1240767960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,6 +3782,7 @@ GameObject:
   - component: {fileID: 1807800748}
   - component: {fileID: 1807800747}
   - component: {fileID: 1807800750}
+  - component: {fileID: 1807800751}
   m_Layer: 5
   m_Name: Button (11)
   m_TagString: Untagged
@@ -3612,7 +3808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 415, y: -195}
+  m_AnchoredPosition: {x: 305, y: -195}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807800747
@@ -3662,6 +3858,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1807800750}
         m_TargetAssemblyTypeName: SetCharacterStatus, Assembly-CSharp
         m_MethodName: SetStatus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3738,6 +3946,156 @@ MonoBehaviour:
   - 0
   - 0
   - 8
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u30CF\u30CB\u30EF"
+--- !u!114 &1807800751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807800745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
+--- !u!1 &2059534847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2059534848}
+  - component: {fileID: 2059534850}
+  - component: {fileID: 2059534849}
+  m_Layer: 5
+  m_Name: FirstWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2059534848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059534847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 461321214}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 39, y: 130}
+  m_SizeDelta: {x: 350, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2059534849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059534847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u4F7F\u7528\u6B66\u5668:\u30CA\u30A4\u30D5"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: e50636a20f3280c4b8d181d647425515, type: 2}
+  m_sharedMaterial: {fileID: 9142180944433247935, guid: e50636a20f3280c4b8d181d647425515, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2059534850
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059534847}
+  m_CullTransparentMesh: 1
 --- !u!1 &2067084646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3751,6 +4109,7 @@ GameObject:
   - component: {fileID: 2067084649}
   - component: {fileID: 2067084648}
   - component: {fileID: 2067084651}
+  - component: {fileID: 2067084652}
   m_Layer: 5
   m_Name: Button (9)
   m_TagString: Untagged
@@ -3835,6 +4194,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 510546397}
+        m_TargetAssemblyTypeName: PressedSE, Assembly-CSharp
+        m_MethodName: OutputSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2067084649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3902,6 +4273,21 @@ MonoBehaviour:
   - 0
   - 0
   - 5
+  _firstWeaponText: {fileID: 2059534849}
+  _weaponName: "\u30CB\u30F3\u30CB\u30AF"
+--- !u!114 &2067084652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067084646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506886e7ec1306644b030bdc94a39551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressSE: {fileID: 8300000, guid: 5303a9d7bd6cf204697ccc96e32a2659, type: 3}
 --- !u!1 &2080121827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,60 +4372,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1022887580643747324
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1022887580897670937, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_Name
-      value: MaxHp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022887580897670939, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}

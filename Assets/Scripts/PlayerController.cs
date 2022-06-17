@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour, IPause
     [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
     [SerializeField, Tooltip("上下左右のスプライト")] Sprite[] _playerSprites = default;
     [SerializeField, Tooltip("次に必要なEXP(増やす量)")] int _addNextEXP = 50;
+    [SerializeField, Tooltip("経験値を取得時のSE")] AudioClip _getSE = null;
     [SerializeField] SpriteRenderer _spriteRenderer = default;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+    AudioSource _audioSource => GetComponent<AudioSource>();
     TextMeshProUGUI _levelText = default;
     Slider _expBar = default;
     /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量, クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
@@ -104,7 +106,7 @@ public class PlayerController : MonoBehaviour, IPause
     {
         _currentEXP += addEXP;
         _expBar.value = (float)_currentEXP / _nextLevelEXP;
-
+        _audioSource.PlayOneShot(_getSE);
         if (_currentEXP >= _nextLevelEXP)
         {
             LevelUp();
