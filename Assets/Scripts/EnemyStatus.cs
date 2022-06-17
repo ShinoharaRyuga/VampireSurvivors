@@ -15,6 +15,7 @@ public class EnemyStatus : MonoBehaviour, IPause
     AudioSource _audioSource => GetComponent<AudioSource>();
     bool _isMove = true;
     public int DropEXPValue { get => _dropEXPValue; }
+    public int Hp { get => _hp; set => _hp = value; }
 
     void Start()
     {
@@ -53,6 +54,10 @@ public class EnemyStatus : MonoBehaviour, IPause
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.Player.GetDamage(_attackPower);
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            gameObject.SetActive(false);
         }
     }
 

@@ -40,7 +40,12 @@ public class FireWand : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        Debug.Log($"‰Š‚Ìñ{level}");
+        GeneratorNumber++;
+    }
+
+    public override void ResetStatus()
+    {
+        GeneratorNumber = 1;
     }
 
     public void Pause()

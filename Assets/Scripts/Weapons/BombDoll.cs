@@ -5,6 +5,8 @@ public class BombDoll : WeaponBase, IPause
 {
     [SerializeField, Tooltip("è’ìÀÇ≥ÇπÇÈÉåÉCÉÑÅ[")] LayerMask _targetLayerMask = default;
     [SerializeField, Tooltip("çıìG")] float _radius = 1f;
+    /// <summary>ìGÇ…ìñÇΩÇ¡ÇΩâÒêî </summary>
+    int _hitCount = 0;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
 
     void Start()
@@ -22,9 +24,15 @@ public class BombDoll : WeaponBase, IPause
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<EnemyStatus>().GetDamage(Damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
+            collision.GetComponent<EnemyStatus>().GetDamage(Damage);
             Move();
-            //GameManager.Instance.RemovePauseObject(this);
+            _hitCount++;
+        }
+
+        if (_hitCount >= 3)
+        {
+            Destroy(gameObject);
+            GameManager.Instance.RemovePauseObject(this);
         }
     }
 
@@ -45,7 +53,7 @@ public class BombDoll : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        throw new System.NotImplementedException();
+        GeneratorNumber++;
     }
 
     public override void Move()
@@ -65,5 +73,10 @@ public class BombDoll : WeaponBase, IPause
     {
         IsGenerate = true;
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
+    }
+
+    public override void ResetStatus()
+    {
+        GeneratorNumber = 1;
     }
 }

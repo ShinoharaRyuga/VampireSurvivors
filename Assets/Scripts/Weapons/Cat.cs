@@ -48,4 +48,9 @@ public class Cat : WeaponBase
         transform.up = _moveDirection;
         _rb2D.velocity = _moveDirection;
     }
+
+    public override void ResetStatus()
+    {
+     
+    }
 }

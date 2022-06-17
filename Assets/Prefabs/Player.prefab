@@ -589,7 +589,7 @@ MonoBehaviour:
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _radius: 10
+  _radius: 8
 --- !u!114 &5294168757675804559
 MonoBehaviour:
   m_ObjectHideFlags: 0

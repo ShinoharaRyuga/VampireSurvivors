@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8cb5a3bf8399142bb98e6925ed9d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLevel: 9
-  _addArea: 2
+  _maxLevel: 3
+  _addArea: 1

@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour, IPause
     AudioSource _audioSource => GetComponent<AudioSource>();
     TextMeshProUGUI _levelText = default;
     Slider _expBar = default;
-    /// <summary>最大体力, 回復, アーマー, 移動速度, 威力, エリア, 速度, 持続時間, 量, クールダウン, 運気,　成長, 強欲, 呪い, 磁石 初期武器の添え字</summary>
-    float[] _characterStatusArray = new float[16];
+    /// <summary>最大体力　回復　移動速度　磁石　量　初期武器</summary>
+    float[] _characterStatusArray = new float[6];
     /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
     int[] _selectedWeapons = new int[6];
     int[] _selectedEffectWeapons = new int[6];
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour, IPause
     {
         if (_isMove)
         {
-            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _characterStatusArray[3];
+            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _characterStatusArray[2];
             if (dir != Vector2.zero)
             {
                  transform.up = dir;
@@ -83,14 +83,6 @@ public class PlayerController : MonoBehaviour, IPause
     /// <param name="damage">被ダメージ</param>
     public void GetDamage(int damage)
     {
-        //damage -= (int)_characterStatusArray[2];
-
-        //if (damage < 0)
-        //{
-        //    damage = 1;
-          
-        //}
-      
         _currentHP -= damage;
         _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
 

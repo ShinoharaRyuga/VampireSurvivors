@@ -10,13 +10,13 @@ public class GetEXP : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _radius/* + GameManager.Instance.Player.CharacterStatusArray[14]*/);
+        Gizmos.DrawWireSphere(transform.position, _radius);
     }
 
     private void Update()
     {
-        var expobjects = Physics2D.OverlapCircleAll(transform.position, _radius + GameManager.Instance.Player.CharacterStatusArray[14], _expLayerMask);
-      //  Debug.Log(GameManager.Instance.Player.CharacterStatusArray[14]);
+        var expobjects = Physics2D.OverlapCircleAll(transform.position, _radius + GameManager.Instance.Player.CharacterStatusArray[3], _expLayerMask);
+
         if (0 < expobjects.Length)
         {
             foreach (var go in expobjects)

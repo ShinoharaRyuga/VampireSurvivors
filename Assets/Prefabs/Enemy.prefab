@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 10
-  _attackPower: 1
+  _attackPower: 2
   _moveSpeed: 1
   _dropEXPValue: 1
   _expObj: {fileID: 2699080774577347982, guid: 2a4449f01ffa19246aee9dc44d84ff8c, type: 3}

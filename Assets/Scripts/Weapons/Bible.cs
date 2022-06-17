@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Bible : WeaponBase, IPause
 {
+    float _activeTime = 2f;
     bool _isMove = true;
     Transform _playerTransform = default;
     Rigidbody2D _rb2D = default;
@@ -44,7 +45,7 @@ public class Bible : WeaponBase, IPause
             yield return new WaitUntil(() => IsGenerate == true);
             go.SetActive(true);
             yield return new WaitUntil(() => IsGenerate == true);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(_activeTime);
             yield return new WaitUntil(() => IsGenerate == true);
             go.SetActive(false);
         }
@@ -57,7 +58,12 @@ public class Bible : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        Debug.Log($"êπèë{level}");
+        _activeTime += 0.2f;
+    }
+
+    public override void ResetStatus()
+    {
+        _activeTime = 1;
     }
 
     public void Pause()

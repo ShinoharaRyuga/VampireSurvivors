@@ -31418,12 +31418,9 @@ MonoBehaviour:
   - {fileID: 7379740749753805124, guid: 0ee717cd84db7f5498662b9d30df8de5, type: 3}
   - {fileID: 5432116211392705269, guid: 9f91da7bfed07574da47dba59e546628, type: 3}
   - {fileID: 1100326288607768269, guid: a6c1baf386ef8fd4180e4837cd75209c, type: 3}
-  - {fileID: 6166193768485548660, guid: 2d66060c2a11e0e47b7d91ad840d7dd2, type: 3}
-  - {fileID: 1806330981730180813, guid: 46188862e330e454e9e7a288516eb6cc, type: 3}
   - {fileID: 8635347870609620003, guid: b32257373963263419625af59400cddb, type: 3}
   _effectWeapon:
   - {fileID: 1022887580897670938, guid: f15f3f81b23d8514fba8fc90d20ffb50, type: 3}
-  - {fileID: 3369440522867868662, guid: 68eecb387967e58449b721084eac5dcf, type: 3}
   - {fileID: 7234612961036920309, guid: 7c607e79d3ad9bb4498ae3611bef4672, type: 3}
   - {fileID: 7815641980705791193, guid: 1806fe9468d06a44fa889e5b7326b3b4, type: 3}
   - {fileID: 3362159761318039317, guid: 4d1f9b1393a02ef468d48edd678ab9fc, type: 3}
@@ -32773,7 +32770,7 @@ GameObject:
   - component: {fileID: 1796576811}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

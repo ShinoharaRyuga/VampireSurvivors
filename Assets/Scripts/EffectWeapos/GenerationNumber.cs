@@ -7,6 +7,6 @@ public class GenerationNumber : EffectWeaponBase
     [SerializeField, Tooltip("")] int _addNumber = 1;
     public override void Effect()
     {
-        GameManager.Instance.Player.CharacterStatusArray[8] += _addNumber;
+        GameManager.Instance.Player.CharacterStatusArray[4] += _addNumber;
     }
 }

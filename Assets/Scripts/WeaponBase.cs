@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>武器の基底クラス </summary>
 public abstract class WeaponBase : MonoBehaviour
 {
-    [SerializeField, Tooltip("次の攻撃までの時間（間隔）")] int _attackInterval = 0;
+    [SerializeField, Tooltip("次の攻撃までの時間（間隔）")] float _attackInterval = 0;
     [SerializeField, Tooltip("敵に与えるダメージ")] int _damage = 0;
     [SerializeField, Tooltip("ノックバック時にかける力")] int _knockBackPower = 0;
     [SerializeField, Tooltip("移動速度")] int _moveSpeed = 0;
@@ -13,7 +13,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField, Tooltip("レベルアップ時の強化　後で作り直す")] int[] _levelupstatus = default;
     static bool _isGenerate = true;
     /// <summary>次の攻撃までの時間(間隔) </summary>
-    public int AttackInterval { get => _attackInterval; set => _attackInterval = value; }
+    public float AttackInterval { get => _attackInterval; set => _attackInterval = value; }
     /// <summary>移動速度</summary>
     public int MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     /// <summary>敵に与えるダメージ </summary>
@@ -31,6 +31,8 @@ public abstract class WeaponBase : MonoBehaviour
 
     public abstract void LevelUp(int level);
 
+    public abstract void ResetStatus();
+
     /// <summary>決められた数武器を生成する </summary>
     /// <param name="weaponObject">生成する武器</param>
     public void GameObjectGenerator()
@@ -40,7 +42,7 @@ public abstract class WeaponBase : MonoBehaviour
             return;
         }
 
-        for (var i = 0; i < _generatorNumber + GameManager.Instance.Player.CharacterStatusArray[8]; i++)
+        for (var i = 0; i < _generatorNumber + GameManager.Instance.Player.CharacterStatusArray[4]; i++)
         {
             var offsetX = Random.Range(-1.0f, 1.0f);
             var offsetY = Random.Range(-1.0f, 1.0f);

@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackInterval: 2
-  _damage: 10
+  _damage: 5
   _knockBackPower: 0
   _moveSpeed: 3
-  _generatorNumber: 1
-  _maxLevel: 9
+  _generatorNumber: 2
+  _maxLevel: 3
   _levelupstatus: 
   _targetLayerMask:
     serializedVersion: 2

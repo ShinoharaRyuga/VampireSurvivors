@@ -38,6 +38,11 @@ public class Axe : WeaponBase, IPause
         GeneratorNumber++;
     }
 
+    public override void ResetStatus()
+    {
+        GeneratorNumber = 1;
+    }
+
     public override void Move()
     {
         var x = Random.Range(_minX, _maxX);

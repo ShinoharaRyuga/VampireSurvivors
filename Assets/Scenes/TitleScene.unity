@@ -1236,19 +1236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 0
   - 0
   - 1
@@ -1428,21 +1418,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 10
-  - 0.5
-  - 1
+  - 30
+  - 0
   - 4
   - 0
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0.5
   - 0
   _firstWeaponText: {fileID: 2059534849}
   _weaponName: "\u30CA\u30A4\u30D5"
@@ -1890,19 +1870,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 0
   - 0
   - 2
@@ -2158,19 +2128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 0
   - 0
   - 4
@@ -2880,22 +2840,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
   - 0
   - 0
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 6
   _firstWeaponText: {fileID: 2059534849}
   _weaponName: "\u30E0\u30C1"
 --- !u!114 &1112426682
@@ -3072,19 +3022,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 0
   - 0
   - 3
@@ -3447,6 +3387,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1240767961}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetWeaponLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1667037160
@@ -3930,22 +3882,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 10
-  - 0
+  - 30
   - 0
   - 4
   - 0
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 8
+  - 6
   _firstWeaponText: {fileID: 2059534849}
   _weaponName: "\u30CF\u30CB\u30EF"
 --- !u!114 &1807800751
@@ -4257,19 +4199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStatus:
-  - 0
-  - 0
+  - 30
   - 0
   - 4
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   - 0
   - 0
   - 5

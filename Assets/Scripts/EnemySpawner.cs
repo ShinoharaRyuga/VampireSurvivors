@@ -21,7 +21,9 @@ public class EnemySpawner : ObjectPool, IPause
         {
             if (!target.activeSelf)
             {
-                target.GetComponent<EnemyStatus>().SetPopPosition(SetPopPos());
+                var status = target.GetComponent<EnemyStatus>();
+                status.SetPopPosition(SetPopPos());
+                status.Hp = 10;
                 target.SetActive(true);
                 return target;
             }
@@ -50,7 +52,7 @@ public class EnemySpawner : ObjectPool, IPause
 
     public void AddEnemyNumber()
     {
-        _generationNumber += 2;
+        _generationNumber += 4;
         _generationTime -= 0.1f;
     }
 

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     GameObject _gameCanvas = default;
     GameObject _judgementCanvas = default;
     CinemachineVirtualCamera _playerCamera;
-    float[] _selectedCharacterStatus = new float[16];
+    float[] _selectedCharacterStatus = new float[6];
     /// <summary>ポーズするオブジェクト </summary>
     List<IPause> _pauseObjects = new List<IPause>();
     public float[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
@@ -69,9 +69,10 @@ public class GameManager : MonoBehaviour
             _gameTimeManager = GameObject.Find("TimeManager").GetComponent<GameTimeManager>();
             _judgementCanvas.SetActive(false);
             _playerCamera.Follow = _player.transform;
-            _weaponManager.GetWeapon((int)_selectedCharacterStatus[15], WeaponType.Weapon);
+            _weaponManager.GetWeapon((int)_selectedCharacterStatus[5], WeaponType.Weapon);
             _weaponManager.ResetWeapons();
             SetFirstWeaponLevel();
+            WeaponBase.IsGenerate = true;
         }
         else
         {
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var data in GameData.SkillSelectTables)
         {
-            if (data.Id == _selectedCharacterStatus[15])
+            if (data.Id == _selectedCharacterStatus[5])
             {
                 data.Level++;
                 break;
@@ -98,8 +99,6 @@ public class GameManager : MonoBehaviour
         {
             data.Level = 0;
         }
-
-        WeaponBase.IsGenerate = true;
     }
     
     public void GameOver()

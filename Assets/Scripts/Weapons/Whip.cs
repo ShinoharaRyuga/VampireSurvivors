@@ -77,4 +77,9 @@ public class Whip : WeaponBase, IPause
     {
         IsGenerate = true;
     }
+
+    public override void ResetStatus()
+    {
+        
+    }
 }

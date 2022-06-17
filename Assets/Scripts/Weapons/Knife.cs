@@ -21,7 +21,7 @@ public class Knife : WeaponBase, IPause
     {
         GameManager.Instance.AddPauseObject(this);
         transform.up = GameManager.Instance.Player.transform.up;
-        _rb2D.AddForce(GameManager.Instance.Player.transform.up * (MoveSpeed + GameManager.Instance.Player.CharacterStatusArray[6]), ForceMode2D.Impulse);
+        _rb2D.AddForce(GameManager.Instance.Player.transform.up * MoveSpeed, ForceMode2D.Impulse);
     }
 
     public override IEnumerator Generator()
@@ -36,6 +36,7 @@ public class Knife : WeaponBase, IPause
     public override void LevelUp(int level)
     {
         GeneratorNumber++;
+        AttackInterval -= 0.2f; 
     }
 
     public void Pause()
@@ -48,5 +49,11 @@ public class Knife : WeaponBase, IPause
     {
         IsGenerate = true;
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
+    }
+
+    public override void ResetStatus()
+    {
+        GeneratorNumber = 1;
+        AttackInterval = 2;
     }
 }

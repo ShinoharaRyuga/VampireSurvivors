@@ -179,11 +179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackInterval: 2
-  _damage: 10
+  _damage: 5
   _knockBackPower: 0
   _moveSpeed: 8
   _generatorNumber: 1
-  _maxLevel: 9
+  _maxLevel: 5
   _levelupstatus: 
   _maxX: 0.3
   _minX: -0.3

@@ -40,7 +40,8 @@ public class MagicWand : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        Debug.Log($"ñÇñ@ÇÃèÒ{level}");
+        GeneratorNumber++;
+        AttackInterval -= 0.2f;
     }
 
     public void Pause()
@@ -53,5 +54,11 @@ public class MagicWand : WeaponBase, IPause
     {
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
         IsGenerate = true;
+    }
+
+    public override void ResetStatus()
+    {
+        GeneratorNumber = 1;
+        AttackInterval = 1;
     }
 }
