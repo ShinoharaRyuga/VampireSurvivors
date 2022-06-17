@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour, IPause
     /// <summary>現在のレベル </summary>
     int _currentLevel = 1;
     /// <summary>次のレベルアップまでにかかる値の配列の添え字</summary>
-    int _nextLevelEXP = 0;
+    int _nextLevelEXP = 10;
     int _weaponCount = 0;
     int _effectWeaponCount = 0;
     float _horizontal = 0f;

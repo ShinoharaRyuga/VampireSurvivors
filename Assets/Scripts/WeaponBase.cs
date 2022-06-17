@@ -28,9 +28,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     /// <summary>一定間隔ごとに武器を生成する </summary>
     public abstract IEnumerator Generator();
-
+    /// <summary>レベルアップに選ばれた時に呼ばれる </summary>
     public abstract void LevelUp(int level);
-
+    /// <summary>強化したステータスを初期に戻す </summary>
     public abstract void ResetStatus();
 
     /// <summary>決められた数武器を生成する </summary>

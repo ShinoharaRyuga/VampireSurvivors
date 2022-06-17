@@ -2123,7 +2123,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7762712, y: 1}
+    m_SensorSize: {x: 1.7766272, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -31477,7 +31477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetObj: {fileID: 3242657706462377085, guid: 8de6da24ad583464597e74c998f71c48, type: 3}
-  _maxCount: 200
+  _maxCount: 300
+  _addEnemy: 10
+  _generationTimer: 0.2
 --- !u!114 &989584011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31491,7 +31493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetObj: {fileID: 2699080774577347981, guid: 2a4449f01ffa19246aee9dc44d84ff8c, type: 3}
-  _maxCount: 200
+  _maxCount: 300
 --- !u!1 &1118500834
 GameObject:
   m_ObjectHideFlags: 0
@@ -32470,7 +32472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textMeshProUGUI: {fileID: 1249959686}
   _enemySpawner: {fileID: 989584010}
-  _clearTime: 15
+  _clearTime: 3
 --- !u!4 &1607708210
 Transform:
   m_ObjectHideFlags: 0

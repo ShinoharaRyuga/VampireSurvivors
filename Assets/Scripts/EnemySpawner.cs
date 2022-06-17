@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemySpawner : ObjectPool, IPause
 {
+    [SerializeField, Tooltip("‘‚â‚·“G‚Ì”")] int _addEnemy = 5;
+    [SerializeField, Tooltip("¶¬ŠÔŒ¸­")] float _generationTimer = 0.2f;
     bool _isMove = true;
     int _generationNumber = 1;
     float _generationTime = 2f;
@@ -52,8 +54,8 @@ public class EnemySpawner : ObjectPool, IPause
 
     public void AddEnemyNumber()
     {
-        _generationNumber += 4;
-        _generationTime -= 0.1f;
+        _generationNumber += _addEnemy;
+        _generationTime -= _generationTimer;
     }
 
     public void Pause()

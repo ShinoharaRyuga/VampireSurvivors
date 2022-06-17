@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>ニンニク　ToDo.範囲内の敵にダメージを与える </summary>
+/// <summary>ニンニク　範囲内の敵にダメージを与える </summary>
 public class Garlic : WeaponBase, IPause
 {
     [SerializeField, Tooltip("衝突させるレイヤー")] LayerMask _targetLayerMask = default;
@@ -18,7 +17,6 @@ public class Garlic : WeaponBase, IPause
     {
         GameManager.Instance.AddPauseObject(this);
         transform.parent = GameManager.Instance.Player.transform;
-        Debug.Log("start");
     }
 
     private void Update()
