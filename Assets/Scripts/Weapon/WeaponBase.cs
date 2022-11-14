@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>武器の基底クラス </summary>
-public abstract class WeaponBase : MonoBehaviour
+public abstract class WeaponBase : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("次の攻撃までの時間（間隔）")] float _attackInterval = 0;
     [SerializeField, Tooltip("敵に与えるダメージ")] int _damage = 0;
@@ -66,5 +66,15 @@ public abstract class WeaponBase : MonoBehaviour
                 GameManager.Instance.RemovePauseObject(gameObject.GetComponent<IPause>());
             }
         }
+    }
+
+    public virtual void Pause()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public virtual void Restart()
+    {
+        throw new System.NotImplementedException();
     }
 }

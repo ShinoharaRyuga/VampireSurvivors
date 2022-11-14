@@ -9,7 +9,10 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance = default;
+    private static GameManager _instance = default;
+    /// <summary>キャラクターステータスの数 </summary>
+    const int CHARACTER_STATUS_INDEX = 6;
+
     [SerializeField] PlayerController _playerPrefab = default;
     /// <summary>生成されたプレイヤー </summary>
     PlayerController _player = default;
@@ -19,7 +22,7 @@ public class GameManager : MonoBehaviour
     GameObject _gameCanvas = default;
     GameObject _judgementCanvas = default;
     CinemachineVirtualCamera _playerCamera;
-    float[] _selectedCharacterStatus = new float[6];
+    float[] _selectedCharacterStatus = new float[CHARACTER_STATUS_INDEX];
     /// <summary>ポーズするオブジェクト </summary>
     List<IPause> _pauseObjects = new List<IPause>();
     public float[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     public PlayerController Player { get => _player; set => _player = value; }
     public EXPSpawner ExpSpawner { get => _expSpawner; set => _expSpawner = value; }
     public WeaponManager WeaponManager { get => _weaponManager; }
+    public static GameManager Instance { get => _instance; }
 
     private void Awake()
     {
@@ -36,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Instance = this;
+            _instance = this;
             SceneManager.sceneLoaded += GameSceneLoad;
             DontDestroyOnLoad(gameObject);
         }
