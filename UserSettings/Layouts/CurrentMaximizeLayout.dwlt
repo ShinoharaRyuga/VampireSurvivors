@@ -225,7 +225,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e6830000
+      m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 32bdb1ffcaddb1ff4a53b2ffc628b6ff2a14b8ff50b8bfffc8b9bfff2ebbbfffc2bdfcff24bffcffd6aafeff48abfeffdaadfeff18edfeff1ceefeff90eefeff08effeff4c2effffda60ffffac74ffff627dffffba7dffff3e7effff0cfbffff6c610000a4610000908e0000
       m_RenameOverlay:
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 699
     height: 526
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -377,7 +377,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -652,8 +652,8 @@ MonoBehaviour:
     y: 0
     width: 600
     height: 526
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 22133
+  controlID: 22503
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -752,22 +752,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/AssetStoreTools/Top Down Adventure Assets/Visuals/CHARACTERS/player
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/AssetStoreTools/Top Down Adventure Assets/Visuals/CHARACTERS/player
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\vantan\Unity\Vampire Survivors
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec630000
-    m_LastClickedID: 25580
-    m_ExpandedIDs: 00000000ce630000e663000000ca9a3b
+    scrollPos: {x: 0, y: 140}
+    m_SelectedIDs: 887e0000
+    m_LastClickedID: 32392
+    m_ExpandedIDs: 00000000ce630000e6630000e863000036650000fc7d00001e7e0000207e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -820,10 +820,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: e6830000
-    m_LastClickedInstanceID: 33766
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000000000000a2d90000a6d900006a620000c2dd000050e200005ae20000d4dd0200
+    m_ExpandedInstanceIDs: c623000000000000a2d90000a6d900006a620000c2dd000050e200005ae20000d4dd0200ee620000f0620000f2620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

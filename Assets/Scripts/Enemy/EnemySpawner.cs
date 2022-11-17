@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemySpawner : ObjectPool, IPause
 {
     /// <summary>スポーン時の最小値 </summary>
-    const float SPAWN_POINT_MIN_OFFSET = -20f;
+    const float SPAWN_POINT_MIN_OFFSET = -10f;
     /// <summary>スポーン時の最大値 </summary>
-    const float SPAWN_POINT_MAX_OFFSET = -20f;
+    const float SPAWN_POINT_MAX_OFFSET = 10f;
     /// <summary>敵スポーン時の体力 </summary>
     const int ENEMY_SPAWN_HP = 10;
 
@@ -47,9 +47,9 @@ public class EnemySpawner : ObjectPool, IPause
 
     public override Vector2 SetSpawnPoint()
     {
-        var popX = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
-        var popY = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
-        var spawnPoint = new Vector2(GameManager.Instance.Player.transform.position.x + popX, GameManager.Instance.Player.transform.position.y + popY);
+        var spawnX = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
+        var spawnY = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
+        var spawnPoint = new Vector2(GameManager.Instance.Player.transform.position.x + spawnX, GameManager.Instance.Player.transform.position.y + spawnY);
         return spawnPoint;
     }
 

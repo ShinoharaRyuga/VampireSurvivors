@@ -9,9 +9,7 @@ using Cinemachine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = default;
-    /// <summary>キャラクターステータスの数 </summary>
-    const int CHARACTER_STATUS_INDEX = 6;
-
+ 
     [SerializeField, Tooltip("プレイヤープレハブ")] PlayerController _playerPrefab = default;
     /// <summary>生成されたプレイヤー </summary>
     PlayerController _player = default;
@@ -32,12 +30,10 @@ public class GameManager : MonoBehaviour
 
     /// <summary>プレイヤーを写すカメラ </summary>
     CinemachineVirtualCamera _playerCamera;
-
-    float[] _selectedCharacterStatus = new float[CHARACTER_STATUS_INDEX];　//TODO変更する
     /// <summary>ポーズするオブジェクト </summary>
     List<IPause> _pauseObjects = new List<IPause>();
-
-    public float[] SelectedCharacterStatus { get => _selectedCharacterStatus; set => _selectedCharacterStatus = value; }
+    /// <summary>初期武器 </summary>
+    Weapons _firstWeapon = 0;
     /// <summary>生成されたプレイヤー </summary>
     public PlayerController Player { get => _player; }
     /// <summary>経験値アイテムを生成するスポナー </summary>
@@ -46,6 +42,8 @@ public class GameManager : MonoBehaviour
     public WeaponManager WeaponManager { get => _weaponManager; }
 
     public static GameManager Instance { get => _instance; }
+    /// <summary>初期武器 </summary>
+    public Weapons FirstWeapon { get => _firstWeapon; set => _firstWeapon = value; }
 
     private void Awake()
     {
@@ -78,9 +76,9 @@ public class GameManager : MonoBehaviour
     /// <summary>初期武器を使用可能にする </summary>
     public void SetFirstWeaponLevel()
     {
-        foreach (var data in GameData.SkillSelectTables)
+        foreach (var data in GameData.WeaponSelectTables)
         {
-            if (data.Id == _selectedCharacterStatus[5])
+            if (data.Id == (int)_firstWeapon)
             {
                 data.Level++;
                 break;
@@ -91,7 +89,7 @@ public class GameManager : MonoBehaviour
     /// <summary>全武器のレベルを初期化する </summary>
     public void ResetWeaponLevel()
     {
-        foreach (var data in GameData.SkillSelectTables)
+        foreach (var data in GameData.WeaponSelectTables)
         {
             data.Level = 0;
         }
@@ -149,10 +147,7 @@ public class GameManager : MonoBehaviour
     /// <summary>ゲームを開始させる為に必要な処理 </summary>
     void GameStartProcess()
     {
-        //プレイヤー関連の処理
-        _player = Instantiate(_playerPrefab, Vector2.zero, Quaternion.identity);
-        _player.CharacterStatusArray = _selectedCharacterStatus;
-       
+        _player = Instantiate(_playerPrefab, Vector2.zero, Quaternion.identity); 
 
         //ゲームシーンに存在するものを取得する
         _expSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<EXPSpawner>();
@@ -163,7 +158,7 @@ public class GameManager : MonoBehaviour
         _gameTimeManager = GameObject.Find("TimeManager").GetComponent<GameTimeManager>();
 
         //プレイヤー武器関連の処理を行う
-        _weaponManager.GetWeapon((int)_selectedCharacterStatus[5], WeaponType.Weapon);
+        _weaponManager.GetWeapon((int)_firstWeapon, WeaponType.Weapon);
         _weaponManager.ResetWeapons();
         SetFirstWeaponLevel();
         WeaponBase.IsGenerate = true;

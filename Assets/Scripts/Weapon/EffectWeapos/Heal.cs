@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Heel : EffectWeaponBase
+public class Heal : EffectWeaponBase
 {
     [SerializeField, Tooltip("‰ñ•œ—Ê")] float _addHeelPoint = 0.1f;
     bool _isActive = false;

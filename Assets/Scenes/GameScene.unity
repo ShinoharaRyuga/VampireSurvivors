@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 167561014}
   - component: {fileID: 167561013}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Weapon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2468,7 +2468,7 @@ GameObject:
   - component: {fileID: 500959138}
   - component: {fileID: 500959137}
   m_Layer: 5
-  m_Name: Skill 4
+  m_Name: Weapon 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31142,7 +31142,7 @@ GameObject:
   - component: {fileID: 855123820}
   - component: {fileID: 855123819}
   m_Layer: 5
-  m_Name: SkillSelectCanvas
+  m_Name: WeaponSelectCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31425,8 +31425,8 @@ MonoBehaviour:
   - {fileID: 7815641980705791193, guid: 1806fe9468d06a44fa889e5b7326b3b4, type: 3}
   - {fileID: 3362159761318039317, guid: 4d1f9b1393a02ef468d48edd678ab9fc, type: 3}
   - {fileID: 7203540974990431063, guid: 0929d3b09c5a5814786def8edc5357c8, type: 3}
-  _skillSelectCanvas: {fileID: 855123818}
-  _skillSelectButtons:
+  _weaponSelectCanvas: {fileID: 855123818}
+  _weaponSelectButtons:
   - {fileID: 167561013}
   - {fileID: 1494059007}
   - {fileID: 1859216341}
@@ -31478,7 +31478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetObj: {fileID: 3242657706462377085, guid: 8de6da24ad583464597e74c998f71c48, type: 3}
   _maxCount: 300
-  _addEnemy: 20
+  _addEnemy: 5
   _generationTimer: 0.2
 --- !u!114 &989584011
 MonoBehaviour:
@@ -31506,7 +31506,7 @@ GameObject:
   - component: {fileID: 1118500837}
   - component: {fileID: 1118500836}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WeaponSelectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31552,7 +31552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: skillselect
+  m_text: weaponselect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50636a20f3280c4b8d181d647425515, type: 2}
   m_sharedMaterial: {fileID: 9142180944433247935, guid: e50636a20f3280c4b8d181d647425515, type: 2}
@@ -32237,7 +32237,7 @@ GameObject:
   - component: {fileID: 1494059008}
   - component: {fileID: 1494059007}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Weapon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35327,7 +35327,7 @@ GameObject:
   - component: {fileID: 1859216342}
   - component: {fileID: 1859216341}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Weapon 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
