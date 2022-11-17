@@ -1,10 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class BombDoll : WeaponBase, IPause
+/// <summary>•Šíí@ƒnƒjƒ </summary>
+[RequireComponent(typeof(Rigidbody))]
+public class BombDoll : WeaponBase
 {
+    /// <summary>UŒ‚‰Â”\‰ñ” </summary>
+    const int ATTACK_COUNT = 3;
+    /// <summary>‰Šú¶¬” </summary>
+    const int FIRST_GENERATE_NUMBER = 1;
+
     [SerializeField, Tooltip("Õ“Ë‚³‚¹‚éƒŒƒCƒ„[")] LayerMask _targetLayerMask = default;
-    [SerializeField, Tooltip("õ“G")] float _radius = 1f;
+    [SerializeField, Tooltip("õ“G”ÍˆÍ")] float _radius = 1f;
     /// <summary>“G‚É“–‚½‚Á‚½‰ñ” </summary>
     int _hitCount = 0;
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
@@ -29,7 +36,7 @@ public class BombDoll : WeaponBase, IPause
             _hitCount++;
         }
 
-        if (_hitCount >= 3)
+        if (_hitCount >= ATTACK_COUNT)
         {
             Destroy(gameObject);
             GameManager.Instance.RemovePauseObject(this);
@@ -53,7 +60,7 @@ public class BombDoll : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        GeneratorNumber++;
+        GenerateNumber++;
     }
 
     public override void Move()
@@ -63,13 +70,13 @@ public class BombDoll : WeaponBase, IPause
         _rb2D.AddForce(dir.normalized * MoveSpeed, ForceMode2D.Impulse);
     }
 
-    public void Pause()
+    public override void Pause()
     {
         IsGenerate = false;
         _rb2D.velocity = Vector2.zero;
     }
 
-    public void Restart()
+    public override void Restart()
     {
         IsGenerate = true;
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
@@ -77,6 +84,6 @@ public class BombDoll : WeaponBase, IPause
 
     public override void ResetStatus()
     {
-        GeneratorNumber = 1;
+        GenerateNumber = FIRST_GENERATE_NUMBER;
     }
 }

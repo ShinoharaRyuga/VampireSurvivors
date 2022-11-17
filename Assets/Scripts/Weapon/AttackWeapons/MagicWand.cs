@@ -1,9 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class MagicWand : WeaponBase, IPause
+/// <summary>•Šíí –‚–@‚Ìñ </summary>
+[RequireComponent(typeof(Rigidbody2D))]
+public class MagicWand : WeaponBase
 {
+    /// <summary>ƒŒƒxƒ‹ƒAƒbƒv‚ÉUŒ‚ŠÔŠu‚ª’Z‚­‚È‚é </summary>
+    const float SHORT_ATTACK_INTERVAL_TIME = 0.2f;
+    /// <summary>‰ŠúUŒ‚‚Ì’l </summary>
+    const float FIRST_ATTACK_VALUE = 1f;
+
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+
     void Start()
     {
         GameManager.Instance.AddPauseObject(this);
@@ -39,17 +47,17 @@ public class MagicWand : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        GeneratorNumber++;
-        AttackInterval -= 0.2f;
+        GenerateNumber++;
+        AttackInterval -= SHORT_ATTACK_INTERVAL_TIME;
     }
 
-    public void Pause()
+    public override void Pause()
     {
         _rb2D.velocity = Vector2.zero;
         IsGenerate = false;
     }
 
-    public void Restart()
+    public override void Restart()
     {
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
         IsGenerate = true;
@@ -57,7 +65,7 @@ public class MagicWand : WeaponBase, IPause
 
     public override void ResetStatus()
     {
-        GeneratorNumber = 1;
-        AttackInterval = 1;
+        GenerateNumber = (int)FIRST_ATTACK_VALUE;
+        AttackInterval = FIRST_ATTACK_VALUE;
     }
 }

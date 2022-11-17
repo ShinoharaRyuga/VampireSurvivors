@@ -2,14 +2,20 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>武器種　ナイフ </summary>
-public class Knife : WeaponBase, IPause
+[RequireComponent(typeof(Rigidbody2D))]
+public class Knife : WeaponBase
 {
+    /// <summary>レベルアップ時に攻撃間隔が短くなる </summary>
+    const float SHORT_ATTACK_INTERVAL_TIME = 0.2f;
+    /// <summary>初期攻撃の値 </summary>
+    const float FIRST_ATTACK_VALUE = 1f;
+
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
 
     private void OnBecameInvisible()
     {
         GameManager.Instance.RemovePauseObject(this);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,17 +41,17 @@ public class Knife : WeaponBase, IPause
 
     public override void LevelUp(int level)
     {
-        GeneratorNumber++;
-        AttackInterval -= 0.2f; 
+        GenerateNumber++;
+        AttackInterval -= SHORT_ATTACK_INTERVAL_TIME; 
     }
 
-    public void Pause()
+    public override void Pause()
     {
         _rb2D.velocity = Vector2.zero;  
         IsGenerate = false;
     }
 
-    public void Restart()
+    public override void Restart()
     {
         IsGenerate = true;
         _rb2D.AddForce(transform.up * MoveSpeed, ForceMode2D.Impulse);
@@ -53,7 +59,7 @@ public class Knife : WeaponBase, IPause
 
     public override void ResetStatus()
     {
-        GeneratorNumber = 1;
-        AttackInterval = 2;
+        GenerateNumber = (int)FIRST_ATTACK_VALUE;
+        AttackInterval = FIRST_ATTACK_VALUE;
     }
 }
