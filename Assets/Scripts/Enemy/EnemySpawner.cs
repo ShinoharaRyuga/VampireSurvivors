@@ -1,31 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>敵を生成するクラス </summary>
 public class EnemySpawner : ObjectPool, IPause
 {
+    /// <summary>スポーン時の最小値 </summary>
+    const float SPAWN_POINT_MIN_OFFSET = -20f;
+    /// <summary>スポーン時の最大値 </summary>
+    const float SPAWN_POINT_MAX_OFFSET = -20f;
+    /// <summary>敵スポーン時の体力 </summary>
+    const int ENEMY_SPAWN_HP = 10;
+
     [SerializeField, Tooltip("増やす敵の数")] int _addEnemy = 5;
     [SerializeField, Tooltip("生成時間減少")] float _generationTimer = 0.2f;
-    bool _isMove = true;
+    /// <summary>生成をしてもよいか </summary>
+    bool _isGenerate = true;
+    /// <summary>一度で生成する敵の数 </summary>
     int _generationNumber = 1;
-    float _generationTime = 2f;
+    /// <summary>生成するまでの待ち時間</summary>
+    float _generationWaitTime = 2f;
+
     void Start()
     {
-        SetUp();
-        StartCoroutine(Generator());
+        base.SetUp();
+        StartCoroutine(Generator());    //生成を開始する
         GameManager.Instance.AddPauseObject(this);
-;    }
+    }
 
-    public override GameObject Instantiate(Transform pos)
+    public override GameObject Spawn(Transform spawnPoint)
     {
         foreach (var target in TargetList)
         {
             if (!target.activeSelf)
             {
-                var status = target.GetComponent<EnemyStatus>();
-                status.SetPopPosition(SetPopPos());
-                status.Hp = 10;
+                var enemyStatus = target.GetComponent<EnemyController>();
+                enemyStatus.SetSpawnPoint(SetSpawnPoint());
+                enemyStatus.Hp = ENEMY_SPAWN_HP;
+                GameManager.Instance.AddPauseObject(enemyStatus);   //一時停止させるオブジェクトのリストに追加
                 target.SetActive(true);
                 return target;
             }
@@ -34,45 +45,48 @@ public class EnemySpawner : ObjectPool, IPause
         return null;
     }
 
-    public override Vector2 SetPopPos()
+    public override Vector2 SetSpawnPoint()
     {
-        var popX = Random.Range(-20, 20);
-        var popY = Random.Range(-20, 20);
+        var popX = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
+        var popY = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
         var popPos = new Vector2(GameManager.Instance.Player.transform.position.x + popX, GameManager.Instance.Player.transform.position.y + popY);
         return popPos;
     }
 
-    IEnumerator Generator()
+    /// <summary>スポナーを強化する </summary>
+    public void UpgradeSpawner()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(_generationTime);
-            yield return new WaitUntil(() => _isMove == true);
-            EnemyGenerator();
-        }
-    }
-
-    public void AddEnemyNumber()
-    {
-        _generationNumber += _addEnemy;
-        _generationTime -= _generationTimer;
+        _generationNumber += _addEnemy;     //一度で生成する敵の数を増やす
+        _generationWaitTime -= _generationTimer;    //生成するまで時間を短くする
     }
 
     public void Pause()
     {
-        _isMove = false;
+        _isGenerate = false;
     }
 
     public void Restart()
-    { 
-        _isMove = true;
+    {
+        _isGenerate = true;
     }
 
+    /// <summary>敵を一定の数生成する </summary>
     private void EnemyGenerator()
     {
         for (var i = 0; i < _generationNumber; i++)
         {
             Instantiate(transform);
+        }
+    }
+
+    /// <summary>一定時間後に敵の生成を行う </summary>
+    IEnumerator Generator()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_generationWaitTime);
+            yield return new WaitUntil(() => _isGenerate == true);  //一時停止中であれば待つ
+            EnemyGenerator();
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FindEnemy : MonoBehaviour
 {
     [SerializeField, Tooltip("Õ“Ë‚³‚¹‚éƒŒƒCƒ„[")] LayerMask _targetLayerMask = default;
-    [SerializeField, Tooltip("õ“G")] float _radius = 1f;
+    [SerializeField, Tooltip("õ“G”ÍˆÍ")] float _radius = 1f;
 
     private void OnDrawGizmosSelected()
     {
@@ -31,13 +31,13 @@ public class FindEnemy : MonoBehaviour
     /// <returns>“G‚ÌˆÊ’u</returns>
     public Vector3 GetRandomEnemy()
     {
-        var Enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _targetLayerMask);
-        if (Enemies.Length == 0)    //“G‚ğæ“¾o—ˆ‚È‚©‚Á‚½‚ç
+        var enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _targetLayerMask);
+        if (enemies.Length == 0)    //“G‚ğæ“¾o—ˆ‚È‚©‚Á‚½‚ç
         {
             return Vector3.zero;
         }
-        var index = Random.Range(0, Enemies.Length - 1);
-        var nearEnemyCollider = Enemies[index];
+        var index = Random.Range(0, enemies.Length - 1);
+        var nearEnemyCollider = enemies[index];
         return nearEnemyCollider.transform.position;
     }
 }

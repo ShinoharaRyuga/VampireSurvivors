@@ -9,16 +9,15 @@ public abstract class ObjectPool : MonoBehaviour
     /// <summary>生成されたオブジェクトのリスト </summary>
     List<GameObject> _targetList = new List<GameObject>();
     /// <summary>生成されたオブジェクトのリスト </summary>
-    public List<GameObject> TargetList { get => _targetList; set => _targetList = value; }
+    public List<GameObject> TargetList { get => _targetList; }
 
-    /// <summary>オブジェクトを出す(SetActive(true)) 仮</summary>
-    /// <param name="pos"></param>
-    /// <returns></returns>
-    public abstract GameObject Instantiate(Transform pos);
+    /// <summary>オブジェクトを出す</summary>
+    /// <param name="spawnPoint">スポーン地点</param>
+    public abstract GameObject Spawn(Transform spawnPoint);
 
-    /// <summary>SetActive(true)にしたときの位置 </summary>
-    /// <returns></returns>
-    public abstract Vector2 SetPopPos();
+    /// <summary>スポーン地点を決める</summary>
+    /// <returns>スポーン地点</returns>
+    public abstract Vector2 SetSpawnPoint();
 
     /// <summary>生成しリストに追加する </summary>
     public void SetUp()

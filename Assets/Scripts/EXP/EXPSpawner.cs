@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>経験値アイテムを生成するクラス </summary>
 public class EXPSpawner : ObjectPool
 {
     void Start()
     {
-        SetUp();
+        base.SetUp();
     }
 
-    public override GameObject Instantiate(Transform pos)
+    public override GameObject Spawn(Transform spawnPoint)
     {
         foreach(var target in TargetList)
         {
             if (!target.activeSelf)
             {
                 target.SetActive(true);
-                target.transform.localPosition = pos.position;
-                target.GetComponent<SetEXP>().AddEXP = pos.GetComponent<EnemyStatus>().DropEXPValue;
+                target.transform.localPosition = spawnPoint.position;
                 return target;
             }
         }
@@ -25,8 +23,8 @@ public class EXPSpawner : ObjectPool
         return null;
     }
 
-    public override Vector2 SetPopPos()
+    public override Vector2 SetSpawnPoint()
     {
-        throw new System.NotImplementedException();
+        return Vector2.zero;
     }
 }

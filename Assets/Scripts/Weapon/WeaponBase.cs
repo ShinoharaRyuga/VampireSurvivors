@@ -57,8 +57,8 @@ public abstract class WeaponBase : MonoBehaviour, IPause
     {
         if (other.CompareTag("Enemy"))
         {
-            EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
-            enemyStatus.GetDamage(_damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
+            var enemy = other.GetComponent<EnemyController>();
+            enemy.GetDamage(_damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
 
             if (destroyFlag)    //“G‚É“–‚½‚Á‚½‚çíœ‚³‚ê‚é•Ší‚È‚çíœ‚·‚é
             {

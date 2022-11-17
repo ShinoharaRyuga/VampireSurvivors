@@ -1,43 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatus : MonoBehaviour, IPause
+/// <summary>敵を制御するクラス</summary>
+[RequireComponent(typeof(Animator), typeof(AudioSource), typeof(Rigidbody2D))]
+public class EnemyController : MonoBehaviour, IPause
 {
     [SerializeField, Tooltip("体力")] int _hp = 1;
     [SerializeField, Tooltip("攻撃力")] int _attackPower = 1;
     [SerializeField, Tooltip("移動速度")] float _moveSpeed = 1f;
-    [SerializeField, Tooltip("死亡時に落とす経験値の値")] int _dropEXPValue = 1;
-    [SerializeField, Tooltip("EXPオブジェクト 複製元")] SetEXP _expObj = default;
     [SerializeField, Tooltip("ダメージSE")] AudioClip _damageSE = default;
-    Rigidbody2D _rb2D = default;
+    /// <summary>移動可能かどうか</summary>
+    bool _isMove = true;
+
+    Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     Animator _anim => GetComponent<Animator>();
     AudioSource _audioSource => GetComponent<AudioSource>();
-    bool _isMove = true;
-    public int DropEXPValue { get => _dropEXPValue; }
+
+    /// <summary>体力</summary>
     public int Hp { get => _hp; set => _hp = value; }
-
-    void Start()
-    {
-        _rb2D = GetComponent<Rigidbody2D>();
-        GameManager.Instance.AddPauseObject(this);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            _isMove = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            _isMove = false;
-        }
-    }
 
     private void FixedUpdate()
     {
+        //移動処理
         if (_isMove)
         {
             var dir = (GameManager.Instance.Player.transform.position - transform.position).normalized * _moveSpeed;
@@ -51,11 +34,11 @@ public class EnemyStatus : MonoBehaviour, IPause
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))      //Playerにダメージを与える
         {
             GameManager.Instance.Player.GetDamage(_attackPower);
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall"))   //壁衝突した場合消える
         {
             gameObject.SetActive(false);
         }
@@ -68,22 +51,20 @@ public class EnemyStatus : MonoBehaviour, IPause
         _hp -= damage;
         _anim.SetTrigger("Damage");
         _audioSource.PlayOneShot(_damageSE);
+
         if (_hp <= 0)   //死亡
         {
-        
-            GameManager.Instance.ExpSpawner.Instantiate(transform);
+            GameManager.Instance.ExpSpawner.Spawn(transform);
+            GameManager.Instance.RemovePauseObject(this);
             gameObject.SetActive(false);
         }
     }
 
-    public void SetPopPosition(Vector2 pos)
+    /// <summary>自身の位置をスポーン地点に移動させる </summary>
+    /// <param name="spawnPoint">スポーン地点</param>
+    public void SetSpawnPoint(Vector2 spawnPoint)
     {
-        transform.position = pos;
-    }
-
-    public void Destroy()
-    {
-        gameObject.SetActive(false);
+        transform.position = spawnPoint;
     }
 
     public void Pause()

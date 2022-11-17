@@ -27,7 +27,7 @@ public class Garlic : WeaponBase, IPause
 
             foreach (var enemy in enemies)
             {
-                enemy.GetComponent<EnemyStatus>().GetDamage(1);
+                enemy.GetComponent<EnemyController>().GetDamage(1);
             }
         }
     }

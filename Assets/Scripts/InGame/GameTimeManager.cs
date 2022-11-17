@@ -38,7 +38,7 @@ public class GameTimeManager : MonoBehaviour, IPause
                 if (_seconds >= UPDATE_MINUTES_TIME)
                 {
                     _seconds = 0;
-                    _enemySpawner.AddEnemyNumber();
+                    _enemySpawner.UpgradeSpawner();
                     _minutes++;
                 }
 

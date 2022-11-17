@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, IPause
     AudioSource _audioSource => GetComponent<AudioSource>();
     TextMeshProUGUI _levelText = default;
     Slider _expBar = default;
-    /// <summary>最大体力　回復　移動速度　磁石　量　初期武器</summary>
+    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
     float[] _characterStatusArray = new float[6];
     /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
     int[] _selectedWeapons = new int[6];
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour, IPause
     float _horizontal = 0f;
     float _vertical = 0f;
     bool _isMove = true;
-
+    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
     public float[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
     public int CurrentLevel { get => _currentLevel; }
 

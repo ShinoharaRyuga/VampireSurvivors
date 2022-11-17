@@ -24,7 +24,7 @@ public class BombDoll : WeaponBase, IPause
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<EnemyStatus>().GetDamage(Damage);
+            collision.GetComponent<EnemyController>().GetDamage(Damage);
             Move();
             _hitCount++;
         }
