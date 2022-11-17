@@ -1,41 +1,51 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>プレイヤーを動かす </summary>
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(AudioSource))]
 public class PlayerController : MonoBehaviour, IPause
 {
-    [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
+    /// <summary>プレイヤーステータスの数 </summary>
+    const int PLAYER_STATUS_INDEX = 6;
+    /// <summary>次のレベルアップまでの値の初期値</summary>
+    const int FIRST_NEXT_LEVEL_VALUE = 10;
+
+    /// <summary>0=正面　1=後ろ姿 2=左右の姿</summary>
     [SerializeField, Tooltip("上下左右のスプライト")] Sprite[] _playerSprites = default;
-    [SerializeField, Tooltip("次に必要なEXP(増やす量)")] int _addNextEXP = 50;
+    [SerializeField, Tooltip("HPバー")] Slider _hpSlider = default;
     [SerializeField, Tooltip("経験値を取得時のSE")] AudioClip _getSE = null;
-    [SerializeField] SpriteRenderer _spriteRenderer = default;
-    Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
-    AudioSource _audioSource => GetComponent<AudioSource>();
+    [SerializeField, Tooltip("プレイヤースプライト")] SpriteRenderer _playerSprite = default;
+    [SerializeField, Tooltip("次に必要なEXP(増やす量)")] int _addNextEXP = 50;
+
+    /// <summary>レベルを表示するテキスト</summary>
     TextMeshProUGUI _levelText = default;
+    /// <summary>経験値量を表示するスライダー</summary>
     Slider _expBar = default;
     /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
-    float[] _characterStatusArray = new float[6];
-    /// <summary>プレイヤーが所持(使用)している武器の添え字</summary>
-    int[] _selectedWeapons = new int[6];
-    int[] _selectedEffectWeapons = new int[6];
+    float[] _playerStatus = new float[PLAYER_STATUS_INDEX] {30, 0, 4, 0, 0, 0 };
     /// <summary>現在所持している経験値 </summary>
     int _currentEXP = 0;
     /// <summary>現在の体力 </summary>
     int _currentHP = 0;
     /// <summary>現在のレベル </summary>
     int _currentLevel = 1;
-    /// <summary>次のレベルアップまでにかかる値の配列の添え字</summary>
-    int _nextLevelEXP = 10;
-    int _weaponCount = 0;
-    int _effectWeaponCount = 0;
+    /// <summary>次のレベルアップまでにかかる値</summary>
+    int _nextLevelEXP = FIRST_NEXT_LEVEL_VALUE;
+    /// <summary>入力値(水平)</summary>
     float _horizontal = 0f;
+    /// <summary>入力値(垂直) </summary>
     float _vertical = 0f;
+    /// <summary>移動可能かどうか </summary>
     bool _isMove = true;
+
+    Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
+    AudioSource _audioSource => GetComponent<AudioSource>();
+
     /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
-    public float[] CharacterStatusArray { get => _characterStatusArray; set => _characterStatusArray = value; }
+    public float[] CharacterStatusArray { get => _playerStatus; }
+
+    /// <summary>現在のレベル </summary>
     public int CurrentLevel { get => _currentLevel; }
 
     void Start()
@@ -44,7 +54,7 @@ public class PlayerController : MonoBehaviour, IPause
         _levelText = GameObject.Find("LevelText").GetComponent<TextMeshProUGUI>();
         GameManager.Instance.AddPauseObject(this);
         _levelText.text = $"Lv.{_currentLevel}";
-        _currentHP = (int)_characterStatusArray[0];
+        _currentHP = (int)_playerStatus[0];
     }
 
     void Update()
@@ -52,17 +62,18 @@ public class PlayerController : MonoBehaviour, IPause
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
-        if (_isMove)
+        if (_isMove)    //移動可能であればイラストを切り替える
         {
-            ChangeImage();
+            ChangeSprite();
         }
     }
 
     void FixedUpdate()
     {
-        if (_isMove)
+        //移動処理
+        if (_isMove)    
         {
-            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _characterStatusArray[2];
+            Vector2 dir = new Vector2(_horizontal, _vertical).normalized * _playerStatus[2];
             if (dir != Vector2.zero)
             {
                  transform.up = dir;
@@ -84,16 +95,16 @@ public class PlayerController : MonoBehaviour, IPause
     public void GetDamage(int damage)
     {
         _currentHP -= damage;
-        _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
+        _hpSlider.value = (float)_currentHP / _playerStatus[0];
 
-        if (_currentHP <= 0)
+        if (_currentHP <= 0)　//死亡
         {
             GameManager.Instance.GameOver();
         }
     }
 
     /// <summary>経験値を受け取る </summary>
-    /// <param name="addEXP">増える経験値</param>
+    /// <param name="addEXP">取得経験値量</param>
     public void GetEXP(int addEXP)
     {
         _currentEXP += addEXP;
@@ -105,58 +116,44 @@ public class PlayerController : MonoBehaviour, IPause
         }
     }
 
+    /// <summary>プレイヤーの体力を回復させる </summary>
+    /// <param name="addValue">回復量</param>
     public void Heel(int addValue)
     {
-        if (_currentHP < _characterStatusArray[0])
+        if (_currentHP < _playerStatus[0])
         {
             _currentHP += addValue;
-            _hpSlider.value = (float)_currentHP / _characterStatusArray[0];
+            _hpSlider.value = (float)_currentHP / _playerStatus[0];
         }
     }
 
-    /// <summary>使用している武器を保存する </summary>
-    /// <param name="index">武器配列の添え字</param>
-    /// <param name="type">武器/効果武器どちらか</param>
-    public void SetWeaponIndex(int index, WeaponType type)
+    /// <summary>入力方向に応じてスプライトを変更する</summary>
+    public void ChangeSprite()
     {
-        if (type == WeaponType.Weapon)
+        if (Input.GetKeyDown(KeyCode.W))　//後ろに進む
         {
-            _selectedWeapons[_weaponCount] = index;
-            _weaponCount++;
+            _playerSprite.sprite = _playerSprites[1];
         }
-        else if (type == WeaponType.EffectWeapon)
+        else if (Input.GetKeyDown(KeyCode.S))　//前に進む
         {
-            _selectedEffectWeapons[_effectWeaponCount] = index;
-            _effectWeaponCount++;
+            _playerSprite.sprite = _playerSprites[0];
         }
-    }
-
-    public void ChangeImage()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.A))　//左に進む
         {
-            _spriteRenderer.sprite = _playerSprites[1];
+            _playerSprite.sprite = _playerSprites[2];
+            _playerSprite.flipX = false;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.D))　//右に進む
         {
-            _spriteRenderer.sprite = _playerSprites[0];
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            _spriteRenderer.sprite = _playerSprites[2];
-            _spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            _spriteRenderer.sprite = _playerSprites[2];
-            _spriteRenderer.flipX = true;
+            _playerSprite.sprite = _playerSprites[2];
+            _playerSprite.flipX = true;
         }
     }
 
     /// <summary>一定以上の経験値が貯まったらプレイヤーのレベルを上げる </summary>
     void LevelUp()
     {
-        _nextLevelEXP += _addNextEXP * _currentLevel;
+        _nextLevelEXP += _addNextEXP * _currentLevel;　//次のレベルアップまでの経験値量を計算し足し合わせる
         _currentLevel++;
         _levelText.text = $"Lv.{_currentLevel}";
         _expBar.value = 0;
@@ -170,8 +167,7 @@ public class PlayerController : MonoBehaviour, IPause
     }
 
     public void Restart()
-    {
-       
+    {  
         _isMove = true;
     }
 }

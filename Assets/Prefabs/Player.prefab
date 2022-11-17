@@ -566,14 +566,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9766f2809eca3ad478eb651bbe1aff53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpSlider: {fileID: 1207258231}
   _playerSprites:
   - {fileID: 21300000, guid: 78d03ce1d36c540d5a183e4b042d3afb, type: 3}
   - {fileID: 21300000, guid: 22e2e266842ee4be99cc17a825471e49, type: 3}
   - {fileID: 21300000, guid: bdcdc3843a6a8425d81b0583faf6e314, type: 3}
-  _addNextEXP: 20
+  _hpSlider: {fileID: 1207258231}
   _getSE: {fileID: 8300000, guid: f0f7a18910763f348a3238101c415738, type: 3}
-  _spriteRenderer: {fileID: 5053048053045438191}
+  _playerSprite: {fileID: 5053048053045438191}
+  _addNextEXP: 20
 --- !u!114 &1900346206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361874856097081772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb3bbbc403ac42a4c939a23aa9cc2d69, type: 3}
   m_Name: 
