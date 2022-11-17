@@ -573,7 +573,7 @@ MonoBehaviour:
   _hpSlider: {fileID: 1207258231}
   _getSE: {fileID: 8300000, guid: f0f7a18910763f348a3238101c415738, type: 3}
   _playerSprite: {fileID: 5053048053045438191}
-  _addNextEXP: 20
+  _addNextEXP: 10
 --- !u!114 &1900346206
 MonoBehaviour:
   m_ObjectHideFlags: 0

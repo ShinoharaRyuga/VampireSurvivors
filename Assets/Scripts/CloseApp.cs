@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary>Escapeキーでアプリを落とせるようにするクラス </summary>
 public class CloseApp : MonoBehaviour
 {
     void Update()
