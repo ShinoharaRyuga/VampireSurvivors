@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour, IPause
 
         if (_hp <= 0)   //Ž€–S
         {
-            GameManager.Instance.ExpSpawner.Spawn(transform);
+            GameManager.Instance.ExpSpawner.Spawn(transform.position);
             GameManager.Instance.RemovePauseObject(this);
             gameObject.SetActive(false);
         }

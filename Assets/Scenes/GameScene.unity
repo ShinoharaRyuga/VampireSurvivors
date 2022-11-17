@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 104897559}
   - component: {fileID: 104897558}
   m_Layer: 5
-  m_Name: GameOverText
+  m_Name: ResultText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50636a20f3280c4b8d181d647425515, type: 2}
   m_sharedMaterial: {fileID: 9142180944433247935, guid: e50636a20f3280c4b8d181d647425515, type: 2}
@@ -2123,7 +2123,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7766272, y: 1}
+    m_SensorSize: {x: 1.7797619, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -31478,7 +31478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetObj: {fileID: 3242657706462377085, guid: 8de6da24ad583464597e74c998f71c48, type: 3}
   _maxCount: 300
-  _addEnemy: 10
+  _addEnemy: 20
   _generationTimer: 0.2
 --- !u!114 &989584011
 MonoBehaviour:
@@ -31618,7 +31618,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1118500837
@@ -32470,7 +32470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821ba62193463634ba4cb00493da5fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textMeshProUGUI: {fileID: 1249959686}
+  _timerText: {fileID: 1249959686}
   _enemySpawner: {fileID: 989584010}
   _clearTime: 3
 --- !u!4 &1607708210

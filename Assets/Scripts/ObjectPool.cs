@@ -13,7 +13,7 @@ public abstract class ObjectPool : MonoBehaviour
 
     /// <summary>オブジェクトを出す</summary>
     /// <param name="spawnPoint">スポーン地点</param>
-    public abstract GameObject Spawn(Transform spawnPoint);
+    public abstract GameObject Spawn(Vector2 spawnPoint);
 
     /// <summary>スポーン地点を決める</summary>
     /// <returns>スポーン地点</returns>

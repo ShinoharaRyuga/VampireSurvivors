@@ -5,17 +5,17 @@ public class EXPSpawner : ObjectPool
 {
     void Start()
     {
-        base.SetUp();
+       SetUp();
     }
 
-    public override GameObject Spawn(Transform spawnPoint)
+    public override GameObject Spawn(Vector2 spawnPoint)
     {
         foreach(var target in TargetList)
         {
             if (!target.activeSelf)
             {
                 target.SetActive(true);
-                target.transform.localPosition = spawnPoint.position;
+                target.transform.localPosition = spawnPoint;
                 return target;
             }
         }

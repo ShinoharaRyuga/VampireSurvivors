@@ -22,19 +22,19 @@ public class EnemySpawner : ObjectPool, IPause
 
     void Start()
     {
-        base.SetUp();
+        SetUp();
         StartCoroutine(Generator());    //生成を開始する
         GameManager.Instance.AddPauseObject(this);
     }
 
-    public override GameObject Spawn(Transform spawnPoint)
+    public override GameObject Spawn(Vector2 spawnPoint)
     {
         foreach (var target in TargetList)
         {
             if (!target.activeSelf)
             {
                 var enemyStatus = target.GetComponent<EnemyController>();
-                enemyStatus.SetSpawnPoint(SetSpawnPoint());
+                enemyStatus.SetSpawnPoint(spawnPoint);
                 enemyStatus.Hp = ENEMY_SPAWN_HP;
                 GameManager.Instance.AddPauseObject(enemyStatus);   //一時停止させるオブジェクトのリストに追加
                 target.SetActive(true);
@@ -49,8 +49,8 @@ public class EnemySpawner : ObjectPool, IPause
     {
         var popX = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
         var popY = Random.Range(SPAWN_POINT_MIN_OFFSET, SPAWN_POINT_MAX_OFFSET);
-        var popPos = new Vector2(GameManager.Instance.Player.transform.position.x + popX, GameManager.Instance.Player.transform.position.y + popY);
-        return popPos;
+        var spawnPoint = new Vector2(GameManager.Instance.Player.transform.position.x + popX, GameManager.Instance.Player.transform.position.y + popY);
+        return spawnPoint;
     }
 
     /// <summary>スポナーを強化する </summary>
@@ -75,7 +75,7 @@ public class EnemySpawner : ObjectPool, IPause
     {
         for (var i = 0; i < _generationNumber; i++)
         {
-            Instantiate(transform);
+            Spawn(SetSpawnPoint());
         }
     }
 
