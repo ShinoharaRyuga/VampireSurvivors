@@ -49,7 +49,7 @@ public abstract class WeaponBase : MonoBehaviour, IPause
             return;
         }
 
-        var generateNumber = _generateNumber + GameManager.Instance.Player.CharacterStatusArray[4];     //¶¬”
+        var generateNumber = _generateNumber + GameManager.Instance.Player.PlayerStatus[4];     //¶¬”
 
         for (var i = 0; i < generateNumber; i++)
         {
@@ -69,7 +69,7 @@ public abstract class WeaponBase : MonoBehaviour, IPause
         if (hitCollider.CompareTag("Enemy"))
         {
             var enemy = hitCollider.GetComponent<EnemyController>();
-            enemy.GetDamage(_damage + (int)GameManager.Instance.Player.CharacterStatusArray[4]);
+            enemy.GetDamage(_damage + (int)GameManager.Instance.Player.PlayerStatus[4]);
 
             if (destroyFlag)    //“G‚É“–‚½‚Á‚½‚çíœ‚³‚ê‚é•Ší‚È‚çíœ‚·‚é
             {

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour, IPause
     TextMeshProUGUI _levelText = default;
     /// <summary>経験値量を表示するスライダー</summary>
     Slider _expBar = default;
-    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
+    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=追加武器生成数　5=初期武器</summary>
     float[] _playerStatus = new float[PLAYER_STATUS_INDEX] {30, 0, 4, 0, 0, 0 };
     /// <summary>現在所持している経験値 </summary>
     int _currentEXP = 0;
@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour, IPause
     Rigidbody2D _rb2D => GetComponent<Rigidbody2D>();
     AudioSource _audioSource => GetComponent<AudioSource>();
 
-    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=量　5=初期武器</summary>
-    public float[] CharacterStatusArray { get => _playerStatus; }
+    /// <summary>0=最大体力　1=回復　2=移動速度　3=磁石　4=追加武器生成数　5=初期武器</summary>
+    public float[] PlayerStatus { get => _playerStatus; }
 
     /// <summary>現在のレベル </summary>
     public int CurrentLevel { get => _currentLevel; }

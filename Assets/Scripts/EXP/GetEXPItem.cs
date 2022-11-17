@@ -17,7 +17,7 @@ public class GetEXPItem : MonoBehaviour
     private void Update()
     {
         //EXPƒAƒCƒeƒ€‚ðŽæ“¾‚·‚é
-        var expobjects = Physics2D.OverlapCircleAll(transform.position, _radius + GameManager.Instance.Player.CharacterStatusArray[3], _expLayerMask); 
+        var expobjects = Physics2D.OverlapCircleAll(transform.position, _radius + GameManager.Instance.Player.PlayerStatus[3], _expLayerMask); 
 
         if (0 < expobjects.Length)
         {

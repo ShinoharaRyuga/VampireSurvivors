@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7203540974990431056}
   - component: {fileID: 7203540974990431063}
   m_Layer: 0
-  m_Name: Heel
+  m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f4acf02921c00498c6373941d60d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLevel: 3
+  _maxLevel: 1
   _addHeelPoint: 0.2

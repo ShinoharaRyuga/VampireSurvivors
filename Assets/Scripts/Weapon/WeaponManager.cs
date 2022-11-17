@@ -40,7 +40,6 @@ public class WeaponManager : MonoBehaviour
     {
         foreach (var weapon in _weapons)
         {
-            weapon.GenerateNumber = 1;
             weapon.ResetStatus();
         }
     }

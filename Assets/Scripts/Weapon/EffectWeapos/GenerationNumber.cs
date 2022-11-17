@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>•Ší¶¬”‚ğ‘‚â‚·•Ší </summary>
 public class GenerationNumber : EffectWeaponBase
 {
-    [SerializeField, Tooltip("")] int _addNumber = 1;
+    [SerializeField, Tooltip("‘‚â‚·—Ê")] int _addNumber = 1;
+
     public override void Effect()
     {
-        GameManager.Instance.Player.CharacterStatusArray[4] += _addNumber;
+        GameManager.Instance.Player.PlayerStatus[4] += _addNumber;
     }
 }
